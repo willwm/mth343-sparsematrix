@@ -1,0 +1,11 @@
+/* Thanks (again) to: https://css-tricks.com/snippets/css/a-guide-to-flexbox/ */
+.title {
+  text-align: center;
+  font-family: 'Lato', sans-serif;
+}
+
+.equation {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}

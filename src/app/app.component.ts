@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { arr, NDArray } from '@bluemath/common';
 
 @Component({
@@ -16,5 +17,9 @@ export class AppComponent implements OnInit {
     1 & 3 & 5 \\\\
     \\end{bmatrix}`;
 
-  ngOnInit(): void {}
+  public constructor(private titleService: Title) { }
+
+  ngOnInit(): void {
+    this.titleService.setTitle(this.title);
+  }
 }

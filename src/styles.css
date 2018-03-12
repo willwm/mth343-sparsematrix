@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~katex/dist/katex.css';
+@import url('https://fonts.googleapis.com/css?family=Lato');
 
 /* https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
 html {
