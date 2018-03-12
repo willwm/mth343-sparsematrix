@@ -1,4 +1,4 @@
-# Mth343Sparsematrix
+# mth343-sparsematrix
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.2.
 
