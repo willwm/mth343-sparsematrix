@@ -7,7 +7,7 @@ import * as math from 'mathjs';
   styleUrls: ['./mathjs.component.css']
 })
 export class MathjsComponent implements OnInit, OnChanges {
-  input = '[[1, 2, 4], [0, 4, 2], [0, 0, 5]]';
+  input = '[[1,2,3,4,5], [0,1,2,3,4], [0,0,1,2,3], [0,0,0,1,2], [0,0,0,0,1]]';
   output: string;
   equation: string;
 
@@ -24,8 +24,8 @@ export class MathjsComponent implements OnInit, OnChanges {
   updateMatrix() {
     const A = math.matrix(JSON.parse(this.input), 'sparse');
     console.log(A);
-    this.output = '';
-    this.output += `parsed: ${JSON.stringify(A)}\n`;
+    console.log(JSON.stringify(A));
+    this.output = JSON.stringify(A, ['values', 'index', 'ptr']);
     this.equation = `\\KaTeX: A = ${this.toTex(A)}`;
   }
 
