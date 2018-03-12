@@ -4,6 +4,10 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Notable Dependencies:
 * https://www.npmjs.com/package/ng-katex
+* https://www.npmjs.com/package/mathjs
+* https://www.npmjs.com/package/@types/mathjs
+* https://www.npmjs.com/package/@bluemath/common
+* https://www.npmjs.com/package/@bluemath/linalg
 
 ## Development server
 
