@@ -1,7 +1,10 @@
-<input type="text" class="monospace" id="matrix-input" [(ngModel)]="input" (keyup.enter)="updateMatrix()">
-<pre>{{output}}</pre>
+<label for="matrix-input">Enter Matrix data, in JavaScript Array format:</label>
+<input type="text" class="monospace" name="matrix-input" id="matrix-input"
+  [(ngModel)]="input" (keyup)="updateMatrix()">
+
 <div class="flex">
   <ng-katex [equation]="equation"></ng-katex>
   <div id="plotly"></div>
 </div>
 
+<pre>{{output}}</pre>

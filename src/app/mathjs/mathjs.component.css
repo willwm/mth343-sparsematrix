@@ -6,8 +6,13 @@ div.flex {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 10px;
 }
 
 div#plotly {
   width: 400px;
+}
+
+pre {
+  text-align: center;
 }
