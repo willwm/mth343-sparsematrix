@@ -9,3 +9,11 @@ html {
 *, *:before, *:after {
   box-sizing: inherit;
 }
+
+/* https://www.checkmyworking.com/cm-web-fonts/ */
+body {
+  font-family: 'Computer Modern Serif', serif;
+}
+pre, .monospace {
+  font-family: 'Computer Modern Typewriter', monospace;
+}
