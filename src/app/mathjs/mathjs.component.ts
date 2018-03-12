@@ -13,13 +13,26 @@ export class MathjsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    const A = math.matrix([[1, 0, 0], [0, 4, 0], [0, 0, 5]]);
-    this.output += `A = ${JSON.stringify(A)}\n`;
+    const A = math.matrix([[1, 2, 4], [0, 4, 2], [0, 0, 5]], 'sparse');
     console.log(A);
-    const B = math.parse('[[3,4,5],[0,3,4],[1,3,5]]');
-    this.output += `B = ${JSON.stringify(B)}\n`;
-    this.equation = `B = ${B.toTex()}`;
-    console.log(B);
+
+    this.output += `A = ${JSON.stringify(A)}\n`;
+    const aParsed = math.parse(A.toString());
+    this.equation = `A = ${this.toTex(A)}`;
+  }
+
+  toTex(matrix: mathjs.Matrix): string {
+    // @types/mathjs appears to be missing some method definitions, so I'm using this odd approach to avoid tsc errors. =P
+    const aString = matrix.toString();
+    const aJson = JSON.parse(aString);
+    let latex = '\\begin{bmatrix}\n';
+    for (const row of aJson) {
+      latex += `  ${row.join(' & ')} \\\\ \n`;
+    }
+    latex += '\\end{bmatrix}\n';
+    console.log(aString);
+    console.log(latex)
+    return latex;
   }
 
 }
