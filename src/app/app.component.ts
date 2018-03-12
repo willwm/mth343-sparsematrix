@@ -8,9 +8,13 @@ import { arr, NDArray } from '@bluemath/common';
 })
 export class AppComponent implements OnInit {
   title = 'Sparse Matrix Sample';
-  equation = '';
+  equation =
+    `A =
+    \\begin{bmatrix}
+    3 & 4 & 5 \\\\
+    0 & 3 & 4 \\\\
+    1 & 3 & 5 \\\\
+    \\end{bmatrix}`;
 
-  ngOnInit(): void {
-    this.equation = 'f(x)=\\int_{-\\infty}^\\infty\\hat f(\\xi)\\,e^{2 \\pi i \\xi x}\\,d\\xi';
-  }
+  ngOnInit(): void {}
 }
