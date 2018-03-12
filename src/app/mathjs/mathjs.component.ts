@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import * as math from 'mathjs';
 
 @Component({
@@ -6,19 +6,26 @@ import * as math from 'mathjs';
   templateUrl: './mathjs.component.html',
   styleUrls: ['./mathjs.component.css']
 })
-export class MathjsComponent implements OnInit {
+export class MathjsComponent implements OnInit, OnChanges {
   input = '[[1, 2, 4], [0, 4, 2], [0, 0, 5]]';
-  output = '';
-  equation = '';
+  output: string;
+  equation: string;
 
   constructor() { }
 
   ngOnInit() {
+    this.updateMatrix();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes);
+  }
+
+  updateMatrix() {
     const A = math.matrix(JSON.parse(this.input), 'sparse');
     console.log(A);
-    this.output += `input: ${this.input}\n`;
+    this.output = '';
     this.output += `parsed: ${JSON.stringify(A)}\n`;
-    const aParsed = math.parse(A.toString());
     this.equation = `\\KaTeX: A = ${this.toTex(A)}`;
   }
 

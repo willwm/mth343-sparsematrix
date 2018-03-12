@@ -1,3 +1,3 @@
-<h2>mathjs.component.ts</h2>
+<input type="text" class="matrix-input" id="matrix-input" [(ngModel)]="input" (keyup.enter)="updateMatrix()">
 <pre>{{output}}</pre>
 <ng-katex [equation]="equation"></ng-katex>
