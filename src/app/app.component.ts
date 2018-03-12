@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { arr, NDArray } from '@bluemath/common';
 
 @Component({
   selector: 'app-root',
