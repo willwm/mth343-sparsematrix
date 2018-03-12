@@ -1,3 +1,13 @@
 input.monospace {
   width: 100%;
 }
+
+div.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+div#plotly {
+  width: 400px;
+}

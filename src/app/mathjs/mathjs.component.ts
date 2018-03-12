@@ -1,24 +1,21 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import * as math from 'mathjs';
+import * as Plotly from 'plotly.js';
 
 @Component({
   selector: 'app-mathjs',
   templateUrl: './mathjs.component.html',
   styleUrls: ['./mathjs.component.css']
 })
-export class MathjsComponent implements OnInit, OnChanges {
+export class MathjsComponent implements OnInit {
   input = '[[1,2,3,4,5], [0,1,2,3,4], [0,0,1,2,3], [0,0,0,1,2], [0,0,0,0,1]]';
   output: string;
   equation: string;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
     this.updateMatrix();
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes);
   }
 
   updateMatrix() {
@@ -27,6 +24,7 @@ export class MathjsComponent implements OnInit, OnChanges {
     console.log(JSON.stringify(A));
     this.output = JSON.stringify(A, ['values', 'index', 'ptr']);
     this.equation = `\\KaTeX: A = ${this.toTex(A)}`;
+    this.plotHeatMap(A);
   }
 
   toTex(matrix: mathjs.Matrix): string {
@@ -43,4 +41,17 @@ export class MathjsComponent implements OnInit, OnChanges {
     return latex;
   }
 
+  plotHeatMap(matrix: mathjs.Matrix): void {
+    const mjs = matrix as any;
+    const array = mjs.toArray();
+    const plotData: any[] = [
+      {
+        z: array,
+        type: 'heatmap',
+        colorscale: 'Viridis'
+      }
+    ];
+    console.log(plotData);
+    Plotly.newPlot('plotly', plotData);
+  }
 }

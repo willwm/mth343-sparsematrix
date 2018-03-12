@@ -1,3 +1,7 @@
 <input type="text" class="monospace" id="matrix-input" [(ngModel)]="input" (keyup.enter)="updateMatrix()">
 <pre>{{output}}</pre>
-<ng-katex [equation]="equation"></ng-katex>
+<div class="flex">
+  <ng-katex [equation]="equation"></ng-katex>
+  <div id="plotly"></div>
+</div>
+
