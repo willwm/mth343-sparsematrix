@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import * as math from 'mathjs';
 
 @Component({
@@ -7,18 +7,19 @@ import * as math from 'mathjs';
   styleUrls: ['./mathjs.component.css']
 })
 export class MathjsComponent implements OnInit {
+  input = '[[1, 2, 4], [0, 4, 2], [0, 0, 5]]';
   output = '';
   equation = '';
 
   constructor() { }
 
   ngOnInit() {
-    const A = math.matrix([[1, 2, 4], [0, 4, 2], [0, 0, 5]], 'sparse');
+    const A = math.matrix(JSON.parse(this.input), 'sparse');
     console.log(A);
-
-    this.output += `A = ${JSON.stringify(A)}\n`;
+    this.output += `input: ${this.input}\n`;
+    this.output += `parsed: ${JSON.stringify(A)}\n`;
     const aParsed = math.parse(A.toString());
-    this.equation = `A = ${this.toTex(A)}`;
+    this.equation = `\\KaTeX: A = ${this.toTex(A)}`;
   }
 
   toTex(matrix: mathjs.Matrix): string {
@@ -31,7 +32,7 @@ export class MathjsComponent implements OnInit {
     }
     latex += '\\end{bmatrix}\n';
     console.log(aString);
-    console.log(latex)
+    console.log(latex);
     return latex;
   }
 
