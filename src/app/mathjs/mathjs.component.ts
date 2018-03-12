@@ -14,10 +14,11 @@ export class MathjsComponent implements OnInit {
 
   ngOnInit() {
     const A = math.matrix([[1, 0, 0], [0, 4, 0], [0, 0, 5]]);
-    this.output += JSON.stringify(A);
+    this.output += `A = ${JSON.stringify(A)}\n`;
     console.log(A);
     const B = math.parse('[[3,4,5],[0,3,4],[1,3,5]]');
-    this.equation = B.toTex();
+    this.output += `B = ${JSON.stringify(B)}\n`;
+    this.equation = `B = ${B.toTex()}`;
     console.log(B);
   }
 

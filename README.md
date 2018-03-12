@@ -9,6 +9,9 @@ Notable Dependencies:
 * https://www.npmjs.com/package/@bluemath/common
 * https://www.npmjs.com/package/@bluemath/linalg
 
+Related Links:
+* [UF Sparse Matrix Collection - sorted by id](https://www.cise.ufl.edu/research/sparse/matrices/list_by_id.html)
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
