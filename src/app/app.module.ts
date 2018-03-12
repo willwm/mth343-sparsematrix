@@ -4,10 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { KatexModule } from 'ng-katex';
 
 import { AppComponent } from './app.component';
+import { BluemathComponent } from './bluemath/bluemath.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    BluemathComponent
   ],
   imports: [
     BrowserModule,
