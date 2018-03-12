@@ -5,11 +5,13 @@ import { KatexModule } from 'ng-katex';
 
 import { AppComponent } from './app.component';
 import { BluemathComponent } from './bluemath/bluemath.component';
+import { MathjsComponent } from './mathjs/mathjs.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    BluemathComponent
+    BluemathComponent,
+    MathjsComponent
   ],
   imports: [
     BrowserModule,
