@@ -1,6 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.8.3/katex.min.css');
-@import url('https://fonts.googleapis.com/css?family=Lato');
 
 /* https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
 html {
@@ -12,7 +11,7 @@ html {
 
 /* https://www.checkmyworking.com/cm-web-fonts/ */
 body {
-  font-family: 'Computer Modern Serif', serif;
+  font-family: 'KaTeX_Main','Computer Modern Serif', serif;
 }
 pre, .monospace {
   font-family: 'Computer Modern Typewriter', monospace;
