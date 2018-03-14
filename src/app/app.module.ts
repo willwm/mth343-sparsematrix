@@ -6,6 +6,7 @@ import { KatexModule } from 'ng-katex';
 import { AppComponent } from './app.component';
 import { BluemathComponent } from './bluemath/bluemath.component';
 import { MathjsComponent } from './mathjs/mathjs.component';
+import { LatexService } from './latex.service';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,10 @@ import { MathjsComponent } from './mathjs/mathjs.component';
     FormsModule,
     KatexModule
   ],
-  providers: [Title],
+  providers: [
+    Title,
+    LatexService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
