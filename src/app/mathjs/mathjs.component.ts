@@ -13,6 +13,8 @@ export class MathjsComponent implements OnInit {
   output: string;
   equation: string;
 
+  matrix: mathjs.Matrix;
+
   constructor() {}
 
   ngOnInit() {
@@ -20,12 +22,13 @@ export class MathjsComponent implements OnInit {
   }
 
   updateMatrix() {
-    const A = math.matrix(JSON.parse(this.input), 'sparse');
-    console.log(A);
-    console.log(JSON.stringify(A));
-    this.output = JSON.stringify(A, ['values', 'index', 'ptr']);
-    this.equation = `\\KaTeX: A = ${this.toTex(A)}`;
-    this.plotHeatMap(A);
+    const inputArray = JSON.parse(this.input);
+    this.matrix = math.sparse(inputArray);
+    console.log(this.matrix);
+    console.log(this.matrix.toJSON());
+    this.output = JSON.stringify(this.matrix, ['values', 'index', 'ptr', 'size']);
+    this.equation = `\\KaTeX: A = ${this.toTex(this.matrix)}`;
+    this.plotHeatMap(this.matrix);
   }
 
   toTex(matrix: mathjs.Matrix): string {
@@ -52,7 +55,18 @@ export class MathjsComponent implements OnInit {
         colorscale: 'Viridis'
       }
     ];
+    const layout: any = {
+      xaxis: {
+        anchor: 'y1',
+        side: 'top',
+        ticklen: 0
+      },
+      yaxis: {
+        autorange: 'reversed',
+        ticklen: 0
+      }
+    };
     console.log(plotData);
-    Plotly.newPlot('plotly', plotData);
+    Plotly.newPlot('plotly', plotData, layout, {displayModeBar: false});
   }
 }
