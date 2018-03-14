@@ -1,0 +1,31 @@
+#.travis.yml
+
+language: node_js
+node_js:
+  - "9"
+
+cache:
+  yarn: true
+  directories:
+      - ./node_modules
+
+branches:
+  only:
+    - master
+
+before_script:
+  - npm install -g @angular/cli
+
+install:
+  - npm install
+
+script:
+  - ng build --prod
+
+after_success:
+  - ng test --single-run
+
+notifications:
+  email:
+    on_failure: change
+    on_success: change
