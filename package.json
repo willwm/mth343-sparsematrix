@@ -1,7 +1,12 @@
 {
   "name": "mth343-sparsematrix",
+  "author": "Will Wolff-Myren",
   "version": "0.0.0",
-  "license": "MIT",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/willwm/mth343-sparsematrix.git"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
