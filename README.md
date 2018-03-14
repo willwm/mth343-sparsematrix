@@ -11,6 +11,7 @@ Notable Dependencies:
 
 Related Links:
 * [UF Sparse Matrix Collection - sorted by id](https://www.cise.ufl.edu/research/sparse/matrices/list_by_id.html)
+* [Using Computer Modern on the web](https://www.checkmyworking.com/cm-web-fonts/)
 * [Pandoc](https://pandoc.org/index.html)
     ```bash
     # Use Pandoc to generate Writeup.pdf from Writeup.md:
