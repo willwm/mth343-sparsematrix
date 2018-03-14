@@ -1,10 +1,24 @@
 import { TestBed, async } from '@angular/core/testing';
+import { BrowserModule, Title } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { KatexModule } from 'ng-katex';
+
 import { AppComponent } from './app.component';
+import { BluemathComponent } from './bluemath/bluemath.component';
+import { MathjsComponent } from './mathjs/mathjs.component';
+
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        AppComponent
+        AppComponent,
+        BluemathComponent,
+        MathjsComponent
+      ],
+      imports: [
+        BrowserModule,
+        FormsModule,
+        KatexModule
       ],
     }).compileComponents();
   }));

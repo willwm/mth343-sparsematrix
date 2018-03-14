@@ -1,4 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
+import { KatexModule } from 'ng-katex';
+import * as math from 'mathjs';
+import * as Plotly from 'plotly.js';
 
 import { MathjsComponent } from './mathjs.component';
 
@@ -8,7 +12,11 @@ describe('MathjsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MathjsComponent ]
+      declarations: [ MathjsComponent ],
+      imports: [
+        FormsModule,
+        KatexModule
+      ],
     })
     .compileComponents();
   }));
