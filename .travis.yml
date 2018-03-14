@@ -1,5 +1,7 @@
 #.travis.yml
 
+sudo: required
+dist: trusty
 language: node_js
 node_js:
   - "9"
@@ -12,8 +14,12 @@ cache:
 branches:
   only:
     - master
+addons:
+  chrome: stable
 
 before_script:
+  - "sudo chown root /opt/google/chrome/chrome-sandbox"
+  - "sudo chmod 4755 /opt/google/chrome/chrome-sandbox"
   - npm install -g @angular/cli
 
 install:
@@ -23,6 +29,7 @@ script:
   - ng build --prod
 
 after_success:
+  - ng lint
   - ng test --single-run
 
 notifications:
