@@ -30,7 +30,7 @@ script:
 
 after_success:
   - ng lint
-  - ng test --single-run
+  - ng test --single-run --browsers ChromeTravisCi
 
 notifications:
   email:
