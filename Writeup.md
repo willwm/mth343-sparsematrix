@@ -1,6 +1,6 @@
 ---
 title:          MTH343 Final Project - Lanczos Algorithm
-author:         Will Wolff-Myren
+author:         Will Wolff-Myren (<willw@pdx.edu>)
 date:           2018-03-13
 papersize:      letter
 documentclass:  article
