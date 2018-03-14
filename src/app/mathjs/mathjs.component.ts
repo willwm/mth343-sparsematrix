@@ -15,8 +15,6 @@ export class MathjsComponent implements OnInit {
   output: string;
   equation: string;
 
-  matrix: mathjs.Matrix;
-
   constructor(private latexService: LatexService) {}
 
   ngOnInit() {
@@ -24,17 +22,24 @@ export class MathjsComponent implements OnInit {
   }
 
   updateMatrix() {
-    const inputArray = JSON.parse(this.input);
-    this.matrix = math.sparse(inputArray);
-    console.log(this.matrix);
-    this.output = this.toJsonString(this.matrix);
-    this.equation = this.toTex(this.matrix);
-    this.plotHeatMap(this.matrix);
+    const matrix = this.getSparseMatrix(this.input);
+    this.output = this.toJsonString(matrix);
+    this.equation = this.toTex(matrix);
+    this.plotHeatMap(matrix);
+  }
+
+  getSparseMatrix(input: string): mathjs.Matrix {
+    console.group('getSparseMatrix()');
+    console.log('input:', input);
+    const inputArray = JSON.parse(input);
+    const matrix = math.sparse(inputArray);
+    console.log('matrix:', matrix);
+    console.groupEnd();
+    return matrix;
   }
 
   toJsonString(matrix: mathjs.Matrix): string {
     const matrixJson = matrix.toJSON();
-    console.log(matrixJson);
 
     const jsonString =
 `{
@@ -48,9 +53,13 @@ export class MathjsComponent implements OnInit {
   }
 
   toTex(matrix: mathjs.Matrix): string {
+    console.group('toTex()');
     const array = (matrix as any).toArray();
     const latex = this.latexService.getMatrix(array);
-    return `\\KaTeX: A = ${latex}`;
+    const eqn = `\\KaTeX : A = ${latex}`;
+    console.log('eqn:', eqn);
+    console.groupEnd();
+    return eqn;
   }
 
   plotHeatMap(matrix: mathjs.Matrix): void {
@@ -74,7 +83,10 @@ export class MathjsComponent implements OnInit {
         ticklen: 0
       }
     };
-    console.log(plotData);
+    console.group('plotHeatMap()');
+    console.log('plotData:', plotData[0]);
+    console.log('layout:', layout);
+    console.groupEnd();
     Plotly.newPlot('plotly', plotData, layout, {displayModeBar: false});
   }
 }

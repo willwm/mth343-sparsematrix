@@ -12,7 +12,6 @@ export class LatexService {
       latex += `  ${row.join(' & ')} \\\\ \n`;
     }
     latex += '\\end{bmatrix}\n';
-    console.log(latex);
     return latex;
   }
 
