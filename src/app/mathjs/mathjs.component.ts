@@ -1,6 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import * as math from 'mathjs';
 import * as Plotly from 'plotly.js';
+
+import { LatexService } from '../latex.service';
 
 @Component({
   selector: 'app-mathjs',
@@ -15,7 +17,7 @@ export class MathjsComponent implements OnInit {
 
   matrix: mathjs.Matrix;
 
-  constructor() {}
+  constructor(private latexService: LatexService) {}
 
   ngOnInit() {
     this.updateMatrix();

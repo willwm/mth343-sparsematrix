@@ -6,6 +6,7 @@ import { KatexModule } from 'ng-katex';
 import { AppComponent } from './app.component';
 import { BluemathComponent } from './bluemath/bluemath.component';
 import { MathjsComponent } from './mathjs/mathjs.component';
+import { LatexService } from './latex.service';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -20,6 +21,7 @@ describe('AppComponent', () => {
         FormsModule,
         KatexModule
       ],
+      providers: [LatexService]
     }).compileComponents();
   }));
   it('should create the app', async(() => {

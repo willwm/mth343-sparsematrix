@@ -1,9 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { KatexModule } from 'ng-katex';
-import * as math from 'mathjs';
-import * as Plotly from 'plotly.js';
 
+import { LatexService } from '../latex.service';
 import { MathjsComponent } from './mathjs.component';
 
 describe('MathjsComponent', () => {
@@ -17,6 +16,7 @@ describe('MathjsComponent', () => {
         FormsModule,
         KatexModule
       ],
+      providers: [LatexService]
     })
     .compileComponents();
   }));
