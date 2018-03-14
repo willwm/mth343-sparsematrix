@@ -27,24 +27,30 @@ export class MathjsComponent implements OnInit {
     const inputArray = JSON.parse(this.input);
     this.matrix = math.sparse(inputArray);
     console.log(this.matrix);
-    console.log(this.matrix.toJSON());
-    this.output = JSON.stringify(this.matrix, ['values', 'index', 'ptr', 'size']);
-    this.equation = `\\KaTeX: A = ${this.toTex(this.matrix)}`;
+    this.output = this.toJsonString(this.matrix);
+    this.equation = this.toTex(this.matrix);
     this.plotHeatMap(this.matrix);
   }
 
+  toJsonString(matrix: mathjs.Matrix): string {
+    const matrixJson = matrix.toJSON();
+    console.log(matrixJson);
+
+    const jsonString =
+`{
+  'values':   ${JSON.stringify(matrixJson.values)},
+  'index':    ${JSON.stringify(matrixJson.index)},
+  'ptr':      ${JSON.stringify(matrixJson.ptr)},
+  'size':     ${JSON.stringify(matrixJson.size)}
+}`;
+
+    return jsonString;
+  }
+
   toTex(matrix: mathjs.Matrix): string {
-    // @types/mathjs appears to be missing some method definitions, so I'm using this odd approach to avoid tsc errors. =P
-    const aString = matrix.toString();
-    const aJson = JSON.parse(aString);
-    let latex = '\\begin{bmatrix}\n';
-    for (const row of aJson) {
-      latex += `  ${row.join(' & ')} \\\\ \n`;
-    }
-    latex += '\\end{bmatrix}\n';
-    console.log(aString);
-    console.log(latex);
-    return latex;
+    const array = (matrix as any).toArray();
+    const latex = this.latexService.getMatrix(array);
+    return `\\KaTeX: A = ${latex}`;
   }
 
   plotHeatMap(matrix: mathjs.Matrix): void {
