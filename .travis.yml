@@ -28,11 +28,11 @@ before_script:
   - npm install -g @angular/cli
 
 script:
+  - ng lint
   - ng build --prod
 
-after_success:
-  - ng lint
-  - ng test --single-run --browsers ChromeHeadlessNoSandbox
+test:
+  - ng test --single-run --no-progress --browsers ChromeHeadlessNoSandbox
 
 notifications:
   email:
