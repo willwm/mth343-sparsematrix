@@ -25,58 +25,51 @@ export class MathjsComponent implements OnInit {
   qEquation: string;
   rEquation: string;
 
-  constructor(private latexService: LatexService) {}
+  constructor(private latexService: LatexService) { }
 
   ngOnInit() {
     this.updateMatrix();
   }
 
   updateMatrix(): void {
-    try {
-      this.matrix = this.getSparseMatrix(this.input);
+    const inputArray = this.parseArray(this.input);
+
+    if (inputArray != null) {
+      this.matrix = math.sparse(inputArray);
       this.matrixEquation = this.toTex(this.matrix, 'A');
       console.log('csr(A):', this.matrix);
+
       this.transpose = math.transpose(this.matrix) as mathjs.Matrix;
       this.transposeEquation = this.toTex(this.transpose, 'B = A^T');
       console.log('csr(B):', this.transpose);
+
       this.multiply = math.multiply(this.matrix, this.transpose);
       this.multiplyEquation = this.toTex(this.multiply, 'C = AB');
       console.log('csr(C):', this.multiply);
-      this.updateQR(this.matrix);
-    } catch (SyntaxError) {
-      // TODO: Find better way to handle unfinished edits from input text field!
+
+      const denseMatrix = math.matrix(inputArray, 'dense');
+      this.updateQR(denseMatrix);
     }
   }
 
   updateQR(matrix: mathjs.Matrix): void {
     // TODO: Update @types/mathjs or augment math export with missing qr() function!
-    const many: any = math;
-    const qr = many.qr(matrix);
+    const qr = (math as any).qr(matrix);
     console.log('QR:', qr);
-    this.q = qr.q;
+    this.q = qr.Q;
     this.qEquation = this.toTex(this.q, 'Q');
-    this.r = qr.r;
+    this.r = qr.R;
     this.rEquation = this.toTex(this.q, 'R');
   }
 
-  getSparseMatrix(input: string): mathjs.Matrix {
-    const inputArray = JSON.parse(input);
-    const matrix = math.sparse(inputArray);
-    return matrix;
-  }
-
-  toJsonString(matrix: mathjs.Matrix): string {
-    const matrixJson = matrix.toJSON();
-
-    const jsonString =
-`{
-  'values':   ${JSON.stringify(matrixJson.values)},
-  'index':    ${JSON.stringify(matrixJson.index)},
-  'ptr':      ${JSON.stringify(matrixJson.ptr)},
-  'size':     ${JSON.stringify(matrixJson.size)}
-}`;
-
-    return jsonString;
+  parseArray(input: string): any[] {
+    try {
+      const inputArray = JSON.parse(input);
+      return inputArray;
+    } catch (error) {
+      // TODO: Find better way to handle unfinished edits from input text field!
+      return null;
+    }
   }
 
   toTex(matrix: mathjs.Matrix, label: string): string {

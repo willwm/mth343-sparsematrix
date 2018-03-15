@@ -9,7 +9,8 @@
   },
   "scripts": {
     "ng": "ng",
-    "start": "ng serve -o",
+    "start": "ng serve",
+    "start:open": "ng serve -o",
     "build": "ng build --prod",
     "test": "ng test",
     "test:ci": "ng test --single-run --no-progress --browsers ChromeHeadless",
