@@ -4,6 +4,7 @@ import { KatexModule } from 'ng-katex';
 
 import { LatexService } from '../latex.service';
 import { MathjsComponent } from './mathjs.component';
+import { HeatmapComponent } from '../plotly/heatmap/heatmap.component';
 
 describe('MathjsComponent', () => {
   let component: MathjsComponent;
@@ -11,7 +12,10 @@ describe('MathjsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MathjsComponent ],
+      declarations: [
+        MathjsComponent,
+        HeatmapComponent
+      ],
       imports: [
         FormsModule,
         KatexModule
