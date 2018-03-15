@@ -7,12 +7,14 @@ import { AppComponent } from './app.component';
 import { BluemathComponent } from './bluemath/bluemath.component';
 import { MathjsComponent } from './mathjs/mathjs.component';
 import { LatexService } from './latex.service';
+import { HeatmapComponent } from './plotly/heatmap/heatmap.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BluemathComponent,
-    MathjsComponent
+    MathjsComponent,
+    HeatmapComponent
   ],
   imports: [
     BrowserModule,
