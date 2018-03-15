@@ -20,6 +20,10 @@ export class MathjsComponent implements OnInit {
   transposeEquation: string;
   multiply: mathjs.Matrix;
   multiplyEquation: string;
+  q: mathjs.Matrix;
+  r: mathjs.Matrix;
+  qEquation: string;
+  rEquation: string;
 
   constructor(private latexService: LatexService) {}
 
@@ -27,7 +31,7 @@ export class MathjsComponent implements OnInit {
     this.updateMatrix();
   }
 
-  updateMatrix() {
+  updateMatrix(): void {
     try {
       this.matrix = this.getSparseMatrix(this.input);
       this.matrixEquation = this.toTex(this.matrix, 'A');
@@ -38,8 +42,21 @@ export class MathjsComponent implements OnInit {
       this.multiply = math.multiply(this.matrix, this.transpose);
       this.multiplyEquation = this.toTex(this.multiply, 'C = AB');
       console.log('csr(C):', this.multiply);
+      this.updateQR(this.matrix);
     } catch (SyntaxError) {
+      // TODO: Find better way to handle unfinished edits from input text field!
     }
+  }
+
+  updateQR(matrix: mathjs.Matrix): void {
+    // TODO: Update @types/mathjs or augment math export with missing qr() function!
+    const many: any = math;
+    const qr = many.qr(matrix);
+    console.log('QR:', qr);
+    this.q = qr.q;
+    this.qEquation = this.toTex(this.q, 'Q');
+    this.r = qr.r;
+    this.rEquation = this.toTex(this.q, 'R');
   }
 
   getSparseMatrix(input: string): mathjs.Matrix {
