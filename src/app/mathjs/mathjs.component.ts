@@ -18,6 +18,8 @@ export class MathjsComponent implements OnInit {
   matrixEquation: string;
   transpose: mathjs.Matrix;
   transposeEquation: string;
+  multiply: mathjs.Matrix;
+  multiplyEquation: string;
 
   constructor(private latexService: LatexService) {}
 
@@ -33,6 +35,8 @@ export class MathjsComponent implements OnInit {
       this.transpose = math.transpose(this.matrix) as mathjs.Matrix;
       this.transposeEquation = this.toTex(this.transpose, 'A^T');
       console.log('csr(A^T):', this.toJsonString(this.transpose));
+      this.multiply = math.multiply(this.matrix, this.transpose);
+      this.multiplyEquation = this.toTex(this.multiply, 'AA^T');
     } catch (SyntaxError) {
     }
   }
