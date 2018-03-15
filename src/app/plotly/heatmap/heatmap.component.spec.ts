@@ -4,7 +4,7 @@ import * as Plotly from 'plotly.js';
 
 import { HeatmapComponent } from './heatmap.component';
 
-fdescribe('HeatmapComponent', () => {
+describe('HeatmapComponent', () => {
   let component: HeatmapComponent;
   let fixture: ComponentFixture<HeatmapComponent>;
 
