@@ -34,6 +34,12 @@ script:
 test:
   - ng test --single-run --no-progress --browsers ChromeHeadlessNoSandbox
 
+deploy:
+  provider: surge
+  project: ./dist/
+  domain: mth343-sparsematrix.surge.sh
+  skip_cleanup: true
+
 notifications:
   email:
     on_failure: change
