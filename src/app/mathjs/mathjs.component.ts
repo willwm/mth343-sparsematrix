@@ -31,12 +31,13 @@ export class MathjsComponent implements OnInit {
     try {
       this.matrix = this.getSparseMatrix(this.input);
       this.matrixEquation = this.toTex(this.matrix, 'A');
-      console.log('csr(A):', this.toJsonString(this.matrix));
+      console.log('csr(A):', this.matrix);
       this.transpose = math.transpose(this.matrix) as mathjs.Matrix;
       this.transposeEquation = this.toTex(this.transpose, 'A^T');
-      console.log('csr(A^T):', this.toJsonString(this.transpose));
+      console.log('csr(A^T):', this.transpose);
       this.multiply = math.multiply(this.matrix, this.transpose);
       this.multiplyEquation = this.toTex(this.multiply, 'AA^T');
+      console.log('csr(AA^T):', this.multiply);
     } catch (SyntaxError) {
     }
   }

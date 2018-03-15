@@ -44,6 +44,11 @@ export class HeatmapComponent implements OnInit, OnChanges {
       yaxis: {
         autorange: 'reversed',
         ticklen: 0
+      },
+      width: 350,
+      height: 250,
+      margin: {
+        t: 35, l: 40, b: 35, r: 40
       }
     };
     Plotly.newPlot(this.id, plotData, layout, {displayModeBar: false});
