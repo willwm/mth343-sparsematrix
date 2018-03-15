@@ -9,28 +9,30 @@ node_js:
 cache:
   yarn: true
   directories:
-      - ./node_modules
+      - "node_modules"
 
 branches:
   only:
     - master
+
 addons:
   chrome: stable
 
-before_script:
-  - "sudo chown root /opt/google/chrome/chrome-sandbox"
-  - "sudo chmod 4755 /opt/google/chrome/chrome-sandbox"
-  - npm install -g @angular/cli
+before_install:
+  - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
 
 install:
   - npm install
+
+before_script:
+  - npm install -g @angular/cli
 
 script:
   - ng build --prod
 
 after_success:
   - ng lint
-  - ng test --single-run --browsers ChromeTravisCi
+  - ng test --single-run --browsers ChromeHeadlessNoSandbox
 
 notifications:
   email:
