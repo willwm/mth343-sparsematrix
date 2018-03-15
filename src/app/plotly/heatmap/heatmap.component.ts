@@ -45,10 +45,6 @@ export class HeatmapComponent implements OnInit, OnChanges {
         ticklen: 0
       }
     };
-    console.group('HeatmapComponent.plotHeatMap()');
-    console.log('plotData:', plotData[0]);
-    console.log('layout:', layout);
-    console.groupEnd();
     Plotly.newPlot('plotly', plotData, layout, {displayModeBar: false});
   }
 

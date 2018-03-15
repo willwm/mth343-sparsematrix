@@ -34,12 +34,8 @@ export class MathjsComponent implements OnInit {
   }
 
   getSparseMatrix(input: string): mathjs.Matrix {
-    console.group('getSparseMatrix()');
-    console.log('input:', input);
     const inputArray = JSON.parse(input);
     const matrix = math.sparse(inputArray);
-    console.log('matrix:', matrix);
-    console.groupEnd();
     return matrix;
   }
 
@@ -58,12 +54,8 @@ export class MathjsComponent implements OnInit {
   }
 
   toTex(matrix: mathjs.Matrix): string {
-    console.group('toTex()');
     const array = (matrix as any).toArray();
     const latex = this.latexService.getMatrix(array);
-    const eqn = `\\KaTeX : A = ${latex}`;
-    console.log('eqn:', eqn);
-    console.groupEnd();
-    return eqn;
+    return `\\KaTeX : A = ${latex}`;
   }
 }

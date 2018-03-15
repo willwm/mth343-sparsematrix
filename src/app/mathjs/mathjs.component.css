@@ -8,7 +8,3 @@ div.flex {
   align-items: center;
   margin: 10px;
 }
-
-div#plotly {
-  width: 400px;
-}
