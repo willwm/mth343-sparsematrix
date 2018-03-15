@@ -13,10 +13,11 @@ export class MathjsComponent implements OnInit {
 
   // tslint:disable-next-line:max-line-length
   input = '[[1,2,3,4,5,6,7,8], [0,1,2,3,4,5,6,7], [0,0,1,2,3,4,5,6], [0,0,0,1,2,3,4,5], [0,0,0,0,1,2,3,4], [0,0,0,0,0,1,2,3], [0,0,0,0,0,0,1,2], [0,0,0,0,0,0,0,1]]';
-  output: string;
-  equation: string;
 
   matrix: mathjs.Matrix;
+  matrixEquation: string;
+  transpose: mathjs.Matrix;
+  transposeEquation: string;
 
   constructor(private latexService: LatexService) {}
 
@@ -27,8 +28,11 @@ export class MathjsComponent implements OnInit {
   updateMatrix() {
     try {
       this.matrix = this.getSparseMatrix(this.input);
-      this.output = this.toJsonString(this.matrix);
-      this.equation = this.toTex(this.matrix);
+      this.matrixEquation = this.toTex(this.matrix, 'A');
+      console.log('csr(A):', this.toJsonString(this.matrix));
+      this.transpose = math.transpose(this.matrix) as mathjs.Matrix;
+      this.transposeEquation = this.toTex(this.transpose, 'A^T');
+      console.log('csr(A^T):', this.toJsonString(this.transpose));
     } catch (SyntaxError) {
     }
   }
@@ -53,9 +57,9 @@ export class MathjsComponent implements OnInit {
     return jsonString;
   }
 
-  toTex(matrix: mathjs.Matrix): string {
+  toTex(matrix: mathjs.Matrix, label: string): string {
     const array = (matrix as any).toArray();
     const latex = this.latexService.getMatrix(array);
-    return `\\KaTeX : A = ${latex}`;
+    return `${label} = ${latex}`;
   }
 }

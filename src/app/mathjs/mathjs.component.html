@@ -3,10 +3,13 @@
   [(ngModel)]="input" (keyup)="updateMatrix()">
 
 <div class="flex">
-  <ng-katex [equation]="equation"></ng-katex>
-  <app-heatmap [matrix]="matrix"></app-heatmap>
+  <ng-katex [equation]="matrixEquation"></ng-katex>
+  <app-heatmap [matrix]="matrix" id="matrix"></app-heatmap>
 </div>
 
 <div class="flex">
-  <pre>{{output}}</pre>
+  <ng-katex [equation]="transposeEquation"></ng-katex>
+  <app-heatmap [matrix]="transpose" id="transpose"></app-heatmap>
 </div>
+
+

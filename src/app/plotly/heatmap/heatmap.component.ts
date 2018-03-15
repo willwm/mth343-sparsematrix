@@ -8,6 +8,7 @@ import * as Plotly from 'plotly.js';
   styleUrls: ['./heatmap.component.css']
 })
 export class HeatmapComponent implements OnInit, OnChanges {
+  @Input() id = 'plotly';
   @Input() matrix: mathjs.Matrix;
 
   constructor() { }
@@ -45,7 +46,7 @@ export class HeatmapComponent implements OnInit, OnChanges {
         ticklen: 0
       }
     };
-    Plotly.newPlot('plotly', plotData, layout, {displayModeBar: false});
+    Plotly.newPlot(this.id, plotData, layout, {displayModeBar: false});
   }
 
 }
