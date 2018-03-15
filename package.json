@@ -12,6 +12,7 @@
     "start": "ng serve -o",
     "build": "ng build --prod",
     "test": "ng test",
+    "test:ci": "ng test --single-run --no-progress --browsers ChromeHeadless",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "surge": "npm run build && surge --project ./dist --domain mth343-sparsematrix.surge.sh",

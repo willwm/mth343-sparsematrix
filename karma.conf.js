@@ -27,13 +27,13 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['Chrome', 'ChromeHeadless', 'ChromeHeadlessNoSandbox'],
+    browsers: ['Chrome'],
     customLaunchers: {
       ChromeHeadlessNoSandbox: { // See https://docs.travis-ci.com/user/chrome for details
         base: 'ChromeHeadless',
         flags: ['--no-sandbox', '--disable-gpu']
       }
     },
-    singleRun: true
+    singleRun: false
   });
 };
