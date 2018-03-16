@@ -9,6 +9,8 @@ import { MathjsComponent } from './mathjs/mathjs.component';
 import { LatexService } from './latex.service';
 import { HeatmapComponent } from './plotly/heatmap/heatmap.component';
 import { HighlightService } from './highlight.service';
+import { StringifyService } from './stringify.service';
+import { MatrixService } from './matrix.service';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { HighlightService } from './highlight.service';
   providers: [
     Title,
     LatexService,
-    HighlightService
+    HighlightService,
+    StringifyService,
+    MatrixService
   ],
   bootstrap: [AppComponent]
 })

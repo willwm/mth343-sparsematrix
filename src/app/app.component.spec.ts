@@ -8,6 +8,9 @@ import { BluemathComponent } from './bluemath/bluemath.component';
 import { MathjsComponent } from './mathjs/mathjs.component';
 import { LatexService } from './latex.service';
 import { HeatmapComponent } from './plotly/heatmap/heatmap.component';
+import { HighlightService } from './highlight.service';
+import { MatrixService } from './matrix.service';
+import { StringifyService } from './stringify.service';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -23,7 +26,12 @@ describe('AppComponent', () => {
         FormsModule,
         KatexModule
       ],
-      providers: [LatexService]
+      providers: [
+        LatexService,
+        HighlightService,
+        StringifyService,
+        MatrixService
+      ]
     }).compileComponents();
   }));
   it('should create the app', async(() => {

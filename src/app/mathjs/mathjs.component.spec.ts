@@ -5,8 +5,11 @@ import { KatexModule } from 'ng-katex';
 import { LatexService } from '../latex.service';
 import { MathjsComponent } from './mathjs.component';
 import { HeatmapComponent } from '../plotly/heatmap/heatmap.component';
+import { HighlightService } from '../highlight.service';
+import { MatrixService } from '../matrix.service';
+import { StringifyService } from '../stringify.service';
 
-describe('MathjsComponent', () => {
+fdescribe('MathjsComponent', () => {
   let component: MathjsComponent;
   let fixture: ComponentFixture<MathjsComponent>;
 
@@ -20,7 +23,12 @@ describe('MathjsComponent', () => {
         FormsModule,
         KatexModule
       ],
-      providers: [LatexService]
+      providers: [
+        HighlightService,
+        LatexService,
+        MatrixService,
+        StringifyService
+      ]
     })
     .compileComponents();
   }));

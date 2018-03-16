@@ -4,6 +4,8 @@ import * as Plotly from 'plotly.js';
 
 import { LatexService } from '../latex.service';
 import { HighlightService } from '../highlight.service';
+import { MatrixService } from '../matrix.service';
+import { StringifyService } from '../stringify.service';
 
 @Component({
   selector: 'app-mathjs',
@@ -29,8 +31,10 @@ export class MathjsComponent implements OnInit, AfterViewChecked {
   highlighted = false;
 
   constructor(
+    private highlightService: HighlightService,
     private latexService: LatexService,
-    private highlightService: HighlightService
+    private matrixService: MatrixService,
+    private stringifyService: StringifyService
   ) { }
 
   ngOnInit() {
@@ -49,15 +53,15 @@ export class MathjsComponent implements OnInit, AfterViewChecked {
 
     if (inputArray != null) {
       this.matrix = math.sparse(inputArray);
-      this.matrixEquation = this.toTex(this.matrix, 'A');
+      this.matrixEquation = this.matrixService.toTex(this.matrix, 'A');
       console.log('csr(A):', this.matrix);
 
       this.transpose = math.transpose(this.matrix) as mathjs.Matrix;
-      this.transposeEquation = this.toTex(this.transpose, 'B = A^T');
+      this.transposeEquation = this.matrixService.toTex(this.transpose, 'B = A^T');
       console.log('csr(B):', this.transpose);
 
       this.multiply = math.multiply(this.matrix, this.transpose);
-      this.multiplyEquation = this.toTex(this.multiply, 'C = AB');
+      this.multiplyEquation = this.matrixService.toTex(this.multiply, 'C = AB');
       console.log('csr(C):', this.multiply);
 
       const denseMatrix = math.matrix(inputArray, 'dense');
@@ -70,9 +74,9 @@ export class MathjsComponent implements OnInit, AfterViewChecked {
     const qr = (math as any).qr(matrix);
     console.log('QR:', qr);
     this.q = qr.Q;
-    this.qEquation = this.toTex(this.q, 'Q');
+    this.qEquation = this.matrixService.toTex(this.q, 'Q');
     this.r = qr.R;
-    this.rEquation = this.toTex(this.r, 'R');
+    this.rEquation = this.matrixService.toTex(this.r, 'R');
   }
 
   parseArray(input: string): any[] {
@@ -85,23 +89,7 @@ export class MathjsComponent implements OnInit, AfterViewChecked {
     }
   }
 
-  toTex(matrix: mathjs.Matrix, label: string): string {
-    const array = (matrix as any).toArray();
-    const latex = this.latexService.getMatrix(array);
-    return `${label} = ${latex}`;
-  }
-
-  toJsonString(matrix: mathjs.Matrix): string {
-    const matrixJson = matrix.toJSON();
-
-    const jsonString =
-`{
-  'values':   ${JSON.stringify(matrixJson.values)},
-  'index':    ${JSON.stringify(matrixJson.index)},
-  'ptr':      ${JSON.stringify(matrixJson.ptr)},
-  'size':     ${JSON.stringify(matrixJson.size)}
-}`;
-
-    return jsonString;
+  toJsonString(obj: any): string {
+    return this.stringifyService.getPrettyCompact(obj);
   }
 }
