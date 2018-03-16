@@ -8,6 +8,9 @@ Notable Dependencies:
 * https://www.npmjs.com/package/@types/mathjs
 * https://www.npmjs.com/package/@bluemath/common
 * https://www.npmjs.com/package/@bluemath/linalg
+* https://www.npmjs.com/package/js-beautify
+* https://www.npmjs.com/package/prismjs
+* https://www.npmjs.com/package/plotly.js
 
 Related Links:
 * [UF Sparse Matrix Collection - sorted by id](https://www.cise.ufl.edu/research/sparse/matrices/list_by_id.html)
