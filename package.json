@@ -34,6 +34,7 @@
     "@bluemath/common": "^0.2.3",
     "@bluemath/linalg": "^0.2.2",
     "core-js": "^2.4.1",
+    "js-beautify": "^1.7.5",
     "mathjs": "^4.0.0",
     "ng-katex": "^1.0.3",
     "plotly.js": "^1.35.2",
