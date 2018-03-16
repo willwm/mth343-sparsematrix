@@ -8,3 +8,7 @@ div.flex {
   align-items: center;
   margin: 10px;
 }
+
+div.flex>* {
+  flex: 1 1 auto;
+}

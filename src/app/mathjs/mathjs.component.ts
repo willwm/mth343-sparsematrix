@@ -60,7 +60,7 @@ export class MathjsComponent implements OnInit {
     this.q = qr.Q;
     this.qEquation = this.toTex(this.q, 'Q');
     this.r = qr.R;
-    this.rEquation = this.toTex(this.q, 'R');
+    this.rEquation = this.toTex(this.r, 'R');
   }
 
   parseArray(input: string): any[] {
