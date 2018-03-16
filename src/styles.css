@@ -1,5 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.8.3/katex.min.css');
+@import "~prismjs/plugins/toolbar/prism-toolbar.css";
+@import "~prismjs/themes/prism-okaidia.css";
 
 /* https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
 html {

@@ -8,6 +8,7 @@ import { BluemathComponent } from './bluemath/bluemath.component';
 import { MathjsComponent } from './mathjs/mathjs.component';
 import { LatexService } from './latex.service';
 import { HeatmapComponent } from './plotly/heatmap/heatmap.component';
+import { HighlightService } from './highlight.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { HeatmapComponent } from './plotly/heatmap/heatmap.component';
   ],
   providers: [
     Title,
-    LatexService
+    LatexService,
+    HighlightService
   ],
   bootstrap: [AppComponent]
 })

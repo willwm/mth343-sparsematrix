@@ -6,16 +6,19 @@
   <ng-katex [equation]="matrixEquation"></ng-katex>
   <app-heatmap [matrix]="matrix" id="matrix"></app-heatmap>
 </div>
+<pre class="language-json"><code class="language-json">{{this.toJsonString(matrix)}}</code></pre>
 
 <div class="flex">
   <ng-katex [equation]="transposeEquation"></ng-katex>
   <app-heatmap [matrix]="transpose" id="transpose"></app-heatmap>
 </div>
+<pre class="language-json"><code class="language-json">{{this.toJsonString(transpose)}}</code></pre>
 
 <div class="flex">
   <ng-katex [equation]="multiplyEquation"></ng-katex>
   <app-heatmap [matrix]="multiply" id="multiply"></app-heatmap>
 </div>
+<pre class="language-json"><code class="language-json">{{this.toJsonString(multiply)}}</code></pre>
 
 <div class="flex">
   <ng-katex [equation]="qEquation"></ng-katex>

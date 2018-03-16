@@ -12,3 +12,8 @@ div.flex {
 ng-katex {
   margin: 0 15px;
 }
+
+pre>code {
+  font-family: 'Computer Modern Typewriter', monospace;
+  font-size: 0.85em;
+}

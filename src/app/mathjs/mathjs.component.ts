@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewChecked } from '@angular/core';
 import * as math from 'mathjs';
 import * as Plotly from 'plotly.js';
 
 import { LatexService } from '../latex.service';
+import { HighlightService } from '../highlight.service';
 
 @Component({
   selector: 'app-mathjs',
   templateUrl: './mathjs.component.html',
   styleUrls: ['./mathjs.component.css']
 })
-export class MathjsComponent implements OnInit {
+export class MathjsComponent implements OnInit, AfterViewChecked {
 
   // tslint:disable-next-line:max-line-length
   input = '[[1,2,3,4,5,6,7,8], [0,1,2,3,4,5,6,7], [0,0,1,2,3,4,5,6], [0,0,0,1,2,3,4,5], [0,0,0,0,1,2,3,4], [0,0,0,0,0,1,2,3], [0,0,0,0,0,0,1,2], [0,0,0,0,0,0,0,1]]';
@@ -25,10 +26,22 @@ export class MathjsComponent implements OnInit {
   qEquation: string;
   rEquation: string;
 
-  constructor(private latexService: LatexService) { }
+  highlighted = false;
+
+  constructor(
+    private latexService: LatexService,
+    private highlightService: HighlightService
+  ) { }
 
   ngOnInit() {
     this.updateMatrix();
+  }
+
+  ngAfterViewChecked() {
+    if (!this.highlighted) {
+      this.highlightService.highlightAll();
+      this.highlighted = true;
+    }
   }
 
   updateMatrix(): void {
@@ -76,5 +89,19 @@ export class MathjsComponent implements OnInit {
     const array = (matrix as any).toArray();
     const latex = this.latexService.getMatrix(array);
     return `${label} = ${latex}`;
+  }
+
+  toJsonString(matrix: mathjs.Matrix): string {
+    const matrixJson = matrix.toJSON();
+
+    const jsonString =
+`{
+  'values':   ${JSON.stringify(matrixJson.values)},
+  'index':    ${JSON.stringify(matrixJson.index)},
+  'ptr':      ${JSON.stringify(matrixJson.ptr)},
+  'size':     ${JSON.stringify(matrixJson.size)}
+}`;
+
+    return jsonString;
   }
 }
