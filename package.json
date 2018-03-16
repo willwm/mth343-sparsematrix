@@ -35,7 +35,6 @@
     "@bluemath/linalg": "^0.2.2",
     "core-js": "^2.4.1",
     "mathjs": "^4.0.0",
-    "monaco-editor": "^0.11.1",
     "ng-katex": "^1.0.3",
     "plotly.js": "^1.35.2",
     "rxjs": "^5.5.6",

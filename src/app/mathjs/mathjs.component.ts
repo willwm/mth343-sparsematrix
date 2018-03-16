@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as math from 'mathjs';
 import * as Plotly from 'plotly.js';
-import * as Monaco from 'monaco-editor';
 
 import { LatexService } from '../latex.service';
 
