@@ -9,7 +9,7 @@ import { HighlightService } from '../highlight.service';
 import { MatrixService } from '../matrix.service';
 import { StringifyService } from '../stringify.service';
 
-fdescribe('MathjsComponent', () => {
+describe('MathjsComponent', () => {
   let component: MathjsComponent;
   let fixture: ComponentFixture<MathjsComponent>;
 

@@ -3,9 +3,7 @@ import * as math from 'mathjs';
 import * as Plotly from 'plotly.js';
 
 import { LatexService } from '../latex.service';
-import { HighlightService } from '../highlight.service';
 import { MatrixService } from '../matrix.service';
-import { StringifyService } from '../stringify.service';
 
 @Component({
   selector: 'app-mathjs',
@@ -24,17 +22,17 @@ export class MathjsComponent implements OnInit, AfterViewChecked {
   multiply: mathjs.Matrix;
   multiplyEquation: string;
   q: mathjs.Matrix;
+  qTranspose: mathjs.Matrix;
   r: mathjs.Matrix;
   qEquation: string;
+  qTransposeEquation: string;
   rEquation: string;
 
   highlighted = false;
 
   constructor(
-    private highlightService: HighlightService,
     private latexService: LatexService,
-    private matrixService: MatrixService,
-    private stringifyService: StringifyService
+    private matrixService: MatrixService
   ) { }
 
   ngOnInit() {
@@ -42,14 +40,10 @@ export class MathjsComponent implements OnInit, AfterViewChecked {
   }
 
   ngAfterViewChecked() {
-    if (!this.highlighted) {
-      this.highlightService.highlightAll();
-      this.highlighted = true;
-    }
   }
 
   updateMatrix(): void {
-    const inputArray = this.parseArray(this.input);
+    const inputArray = JSON.parse(this.input);
 
     if (inputArray != null) {
       this.matrix = math.sparse(inputArray);
@@ -72,24 +66,17 @@ export class MathjsComponent implements OnInit, AfterViewChecked {
   updateQR(matrix: mathjs.Matrix): void {
     // TODO: Update @types/mathjs or augment math export with missing qr() function!
     const qr = (math as any).qr(matrix);
-    console.log('QR:', qr);
-    this.q = qr.Q;
+
+    this.q = math.sparse(qr.Q);
     this.qEquation = this.matrixService.toTex(this.q, 'Q');
-    this.r = qr.R;
+    console.log('Q:', this.q);
+
+    this.qTranspose = math.transpose(this.q) as mathjs.Matrix;
+    this.qTransposeEquation = this.matrixService.toTex(this.qTranspose, 'Q^T');
+    console.log('Q^T:', this.qTranspose);
+
+    this.r = math.sparse(qr.R);
     this.rEquation = this.matrixService.toTex(this.r, 'R');
-  }
-
-  parseArray(input: string): any[] {
-    try {
-      const inputArray = JSON.parse(input);
-      return inputArray;
-    } catch (error) {
-      // TODO: Find better way to handle unfinished edits from input text field!
-      return null;
-    }
-  }
-
-  toJsonString(obj: any): string {
-    return this.stringifyService.getPrettyCompact(obj);
+    console.log('R:', this.r);
   }
 }

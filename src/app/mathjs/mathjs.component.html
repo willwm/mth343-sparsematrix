@@ -1,26 +1,20 @@
-<label for="matrix-input">Enter Matrix data, in JavaScript Array format:</label>
-<input type="text" class="monospace" name="matrix-input" id="matrix-input"
-  [(ngModel)]="input" (keyup)="updateMatrix()">
-
 <div class="flex">
   <ng-katex [equation]="matrixEquation"></ng-katex>
   <app-heatmap [matrix]="matrix" id="matrix"></app-heatmap>
 </div>
-<pre class="language-json"><code class="language-json">{{this.toJsonString(matrix)}}</code></pre>
 
 <div class="flex">
   <ng-katex [equation]="transposeEquation"></ng-katex>
   <app-heatmap [matrix]="transpose" id="transpose"></app-heatmap>
 </div>
-<pre class="language-json"><code class="language-json">{{this.toJsonString(transpose)}}</code></pre>
 
 <div class="flex">
   <ng-katex [equation]="multiplyEquation"></ng-katex>
   <app-heatmap [matrix]="multiply" id="multiply"></app-heatmap>
 </div>
-<pre class="language-json"><code class="language-json">{{this.toJsonString(multiply)}}</code></pre>
 
 <div class="flex">
   <ng-katex [equation]="qEquation"></ng-katex>
+  <ng-katex [equation]="qTransposeEquation"></ng-katex>
   <ng-katex [equation]="rEquation"></ng-katex>
 </div>
