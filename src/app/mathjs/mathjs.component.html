@@ -1,16 +1,54 @@
-<h2>Matrices: <i>A, B, C</i></h2>
-<mat-grid-list cols="2" rowHeight="3:1">
-  <mat-grid-tile><ng-katex [equation]="matrixEquation"></ng-katex></mat-grid-tile>
-  <mat-grid-tile><app-heatmap [matrix]="matrix" id="matrix"></app-heatmap></mat-grid-tile>
-  <mat-grid-tile><ng-katex [equation]="transposeEquation"></ng-katex></mat-grid-tile>
-  <mat-grid-tile><app-heatmap [matrix]="transpose" id="transpose"></app-heatmap></mat-grid-tile>
-  <mat-grid-tile><ng-katex [equation]="multiplyEquation"></ng-katex></mat-grid-tile>
-  <mat-grid-tile><app-heatmap [matrix]="multiply" id="multiply"></app-heatmap></mat-grid-tile>
-</mat-grid-list>
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      <h2>Matrices:
+        <i>A, B, C</i>
+      </h2>
+    </mat-panel-title>
+  </mat-expansion-panel-header>
 
-<h2>Matrices: <i>Q, Q<sup>T</sup>, R</i></h2>
-<mat-grid-list cols="3" rowHeight="2:1">
-  <mat-grid-tile><ng-katex [equation]="qEquation"></ng-katex></mat-grid-tile>
-  <mat-grid-tile><ng-katex [equation]="qTransposeEquation"></ng-katex></mat-grid-tile>
-  <mat-grid-tile><ng-katex [equation]="rEquation"></ng-katex></mat-grid-tile>
-</mat-grid-list>
+  <mat-grid-list cols="2" rowHeight="225px">
+    <mat-grid-tile>
+      <ng-katex [equation]="matrixEquation"></ng-katex>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <app-heatmap [matrix]="matrix" id="matrix"></app-heatmap>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <ng-katex [equation]="transposeEquation"></ng-katex>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <app-heatmap [matrix]="transpose" id="transpose"></app-heatmap>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <ng-katex [equation]="multiplyEquation"></ng-katex>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <app-heatmap [matrix]="multiply" id="multiply"></app-heatmap>
+    </mat-grid-tile>
+  </mat-grid-list>
+</mat-expansion-panel>
+
+
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      <h2>Matrices:
+        <i>Q, Q
+          <sup>T</sup>, R</i>
+      </h2>
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+
+  <mat-grid-list cols="3" rowHeight="225px">
+    <mat-grid-tile>
+      <ng-katex [equation]="qEquation"></ng-katex>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <ng-katex [equation]="qTransposeEquation"></ng-katex>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <ng-katex [equation]="rEquation"></ng-katex>
+    </mat-grid-tile>
+  </mat-grid-list>
+</mat-expansion-panel>

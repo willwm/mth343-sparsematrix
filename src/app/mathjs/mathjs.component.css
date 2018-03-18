@@ -1,4 +1,3 @@
-pre>code {
-  font-family: 'Computer Modern Typewriter', monospace;
-  font-size: 0.85em;
+mat-panel-title, mat-panel-description {
+  font-family: 'Katex_Main', monospace;
 }
