@@ -1,9 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.8.3/katex.min.css');
-@import "~prismjs/plugins/toolbar/prism-toolbar.css";
-@import "~prismjs/themes/prism-okaidia.css";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
-/* https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
 html {
   box-sizing: border-box;
 }
@@ -11,10 +9,12 @@ html {
   box-sizing: inherit;
 }
 
-/* https://www.checkmyworking.com/cm-web-fonts/ */
 body {
   font-family: 'KaTeX_Main','Computer Modern Serif', serif;
 }
 pre, .monospace {
   font-family: 'Computer Modern Typewriter', monospace;
 }
+
+/* https://github.com/Khan/KaTeX/wiki/Font-Options */
+.katex { font-size: 1em !important; }
