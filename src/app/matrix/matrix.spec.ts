@@ -42,6 +42,14 @@ describe('Matrix', () => {
     expect(resultArray).toEqual([[2, 4], [6, 8]]);
   });
 
+  it('should correctly multiplyBy() a vector', () => {
+    const matrix = new Matrix(defaultArray, defaultName);
+    const vector = new Matrix([2, 2], 'v');
+    const result = matrix.multiplyBy(vector, 'Av');
+    const resultArray = result.toArray();
+    expect(resultArray).toEqual([[6], [14]]);
+  });
+
   it('should correctly multiplyBy() an Array', () => {
     const matrix = new Matrix(defaultArray, defaultName);
     const result = matrix.multiplyBy([[2, 0], [0, 2]]);
