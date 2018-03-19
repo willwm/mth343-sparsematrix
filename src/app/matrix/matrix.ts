@@ -1,6 +1,6 @@
-import * as mathjs from 'mathjs';
+import * as math from 'mathjs';
 
-type MathArray = number[] | number[][];
+export type MathArray = number[] | number[][];
 
 /**
  * Convenience wrapper for mathjs.Matrix for easier TypeScript consumption,
@@ -19,10 +19,9 @@ export class Matrix {
    */
   constructor(
     private data: MathArray | mathjs.Matrix,
-    private format?: 'sparse' | 'dense',
-    private name?: string
+    public name?: string
   ) {
-    this.matrix = math.matrix(data, format);
+    this.matrix = math.matrix(data);
   }
 
   /**
