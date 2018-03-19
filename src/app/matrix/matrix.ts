@@ -1,6 +1,8 @@
 import * as math from 'mathjs';
 
 export type MathArray = number[] | number[][];
+export type MathType = number|MathArray|Matrix;
+export type MathExpression = string|string[]|MathArray|Matrix;
 
 /**
  * Convenience wrapper for mathjs.Matrix for easier TypeScript consumption,
@@ -44,9 +46,9 @@ export class Matrix {
   }
 
   isSymmetric(): boolean {
-    const transpose = this.transpose();
-    const result = math.equal(this.matrix, transpose) as boolean;
-    return result;
+    const transpose = math.transpose(this.matrix);
+    const result = (math as any).compareNatural(transpose, this.matrix);
+    return (result === 0);
   }
 
   /**
@@ -55,7 +57,7 @@ export class Matrix {
    * @returns {Matrix}
    * @memberof Matrix
    */
-  multiplyBy(y: MathArray | Matrix): Matrix {
+  multiplyBy(y: MathType): Matrix {
     const result = math.multiply(this.matrix, y);
     return new Matrix(result);
   }
