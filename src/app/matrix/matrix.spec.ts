@@ -5,8 +5,16 @@ describe('Matrix', () => {
   const defaultName = 'A';
   const defaultArray = [[1, 2], [3, 4]];
 
-  it('should create an instance, and set instance properties accordingly', () => {
+  it('should create an instance from an Array and string, and set instance properties accordingly', () => {
     const matrix = new Matrix(defaultArray, defaultName);
+    expect(matrix).toBeTruthy();
+    expect(matrix.name).toEqual(defaultName);
+    expect(matrix.toArray()).toEqual(defaultArray);
+  });
+
+  it('should create an instance from a string and string, and set instance properties accordingly', () => {
+    const json = '[[1, 2], [3, 4]]';
+    const matrix = new Matrix(json, defaultName);
     expect(matrix).toBeTruthy();
     expect(matrix.name).toEqual(defaultName);
     expect(matrix.toArray()).toEqual(defaultArray);
@@ -39,6 +47,13 @@ describe('Matrix', () => {
     const result = matrix.multiplyBy([[2, 0], [0, 2]]);
     const resultArray = result.toArray();
     expect(resultArray).toEqual([[2, 4], [6, 8]]);
+  });
+
+  it('should correctly multiplyBy() another Matrix instance', () => {
+    const A = new Matrix(defaultArray, defaultName);
+    const B = new Matrix([[2, 0], [0, 2]], 'B');
+    const result = A.multiplyBy(B, 'C');
+    expect(result.toArray()).toEqual([[2, 4], [6, 8]]);
   });
 
   it('should return the matrix transpose from transpose(), and should not modify the original', () => {

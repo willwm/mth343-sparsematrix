@@ -10,6 +10,7 @@ import { MatrixComponent } from '../matrix/matrix.component';
 import { HeatmapComponent } from '../plotly/heatmap/heatmap.component';
 import { StringifyService } from '../stringify.service';
 import { MathjsComponent } from './mathjs.component';
+import { Matrix } from '../matrix/matrix';
 
 describe('MathjsComponent', () => {
   let component: MathjsComponent;
@@ -45,5 +46,16 @@ describe('MathjsComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should assign properties as expected when updateMatrix() is called', () => {
+    const matrix = new Matrix([[1, 2], [3, 4]], 'A');
+    const transpose = matrix.transpose('B');
+    const multiply = matrix.multiplyBy(transpose, 'C');
+
+    component.updateMatrix(matrix);
+    expect(component.matrix).toBe(matrix);
+    expect(component.transpose.toArray()).toEqual(transpose.toArray());
+    expect(component.multiply.toArray()).toEqual(multiply.toArray());
   });
 });

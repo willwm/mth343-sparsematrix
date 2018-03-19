@@ -22,8 +22,7 @@ export class MathjsComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    const inputArray = JSON.parse(this.input);
-    const matrix = new Matrix(inputArray, 'A');
+    const matrix = new Matrix(this.input, 'A');
 
     this.updateMatrix(matrix);
     this.updateQR(matrix);
@@ -31,16 +30,14 @@ export class MathjsComponent implements OnInit {
 
   updateMatrix(matrix: Matrix): void {
     this.matrix = matrix;
-    this.transpose = matrix.transpose();
-    this.transpose.name = 'B';
-    this.multiply = matrix.multiplyBy(this.transpose);
-    this.multiply.name = 'C';
+    this.transpose = matrix.transpose('B');
+    this.multiply = matrix.multiplyBy(this.transpose, 'C');
   }
 
   updateQR(matrix: Matrix): void {
     const qr = matrix.qr();
     this.q = qr.Q;
-    this.qTranspose = qr.Q.transpose();
+    this.qTranspose = qr.Q.transpose('Q^T');
     this.r = qr.R;
   }
 }
