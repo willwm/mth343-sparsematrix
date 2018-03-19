@@ -7,7 +7,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { KatexModule } from 'ng-katex';
 
 import { AppComponent } from './app.component';
-import { BluemathComponent } from './bluemath/bluemath.component';
 import { HighlightService } from './highlight.service';
 import { MathjsComponent } from './mathjs/mathjs.component';
 import { MatrixComponent } from './matrix/matrix.component';
@@ -17,7 +16,6 @@ import { StringifyService } from './stringify.service';
 @NgModule({
   declarations: [
     AppComponent,
-    BluemathComponent,
     MathjsComponent,
     HeatmapComponent,
     MatrixComponent

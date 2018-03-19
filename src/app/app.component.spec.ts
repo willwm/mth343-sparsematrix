@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { KatexModule } from 'ng-katex';
 
 import { AppComponent } from './app.component';
-import { BluemathComponent } from './bluemath/bluemath.component';
 import { HighlightService } from './highlight.service';
 import { MathjsComponent } from './mathjs/mathjs.component';
 import { HeatmapComponent } from './plotly/heatmap/heatmap.component';
@@ -19,7 +18,6 @@ describe('AppComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
-        BluemathComponent,
         HeatmapComponent,
         MathjsComponent,
         MatrixComponent
