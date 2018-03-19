@@ -4,10 +4,11 @@
   "version": "2.0.0",
   "tasks": [
     {
+      "identifier": "start",
       "type": "npm",
       "script": "start",
       "problemMatcher": [
-        "$tsc"
+        "$tsc",
       ],
       "isBackground": true,
       "presentation": {
@@ -22,6 +23,7 @@
       }
     },
     {
+      "identifier": "test",
       "type": "npm",
       "script": "test",
       "problemMatcher": [
