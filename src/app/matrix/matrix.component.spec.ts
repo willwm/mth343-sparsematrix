@@ -1,14 +1,14 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import * as math from 'mathjs';
 import { KatexModule } from 'ng-katex';
 
+import { Matrix } from './matrix';
 import { MatrixComponent } from './matrix.component';
 
 describe('MatrixComponent', () => {
   let component: MatrixComponent;
   let fixture: ComponentFixture<MatrixComponent>;
   const name = 'A';
-  const matrix = math.matrix([[1, 0], [0, 1]]);
+  const matrix = new Matrix([[1, 0], [0, 1]], name);
 
   beforeEach(
     async(() => {
@@ -38,7 +38,7 @@ describe('MatrixComponent', () => {
 
   it('should update component params when updateMatrix() is called', () => {
     const newName = 'B';
-    const newMatrix = math.matrix([[1, 2], [3, 4]]);
+    const newMatrix = new Matrix([[1, 2], [3, 4]], newName);
     const newEquation = `${newName} = ${component.toTex(newMatrix)}`;
 
     component.updateMatrix(newName, newMatrix);

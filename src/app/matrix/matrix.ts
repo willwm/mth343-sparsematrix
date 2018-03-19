@@ -1,8 +1,8 @@
 import * as math from 'mathjs';
 
 export type MathArray = number[] | number[][];
-export type MathType = number|MathArray|Matrix;
-export type MathExpression = string|string[]|MathArray|Matrix;
+export type MathType = number|MathArray;
+export type MathExpression = string|string[]|MathArray;
 
 /**
  * Convenience wrapper for mathjs.Matrix for easier TypeScript consumption,
@@ -23,7 +23,7 @@ export class Matrix {
     private data: MathArray | mathjs.Matrix,
     public name?: string
   ) {
-    this.matrix = math.matrix(data);
+    this.matrix = math.matrix(data, 'sparse');
   }
 
   /**
@@ -53,11 +53,12 @@ export class Matrix {
 
   /**
    * Convenience wrapper for math.multiply() that uses this Matrix instance as the first parameter.
-   * @param {(MathArray | Matrix)} y
+   * @param {(MathArray | Matrix)} matrix
    * @returns {Matrix}
    * @memberof Matrix
    */
-  multiplyBy(y: MathType): Matrix {
+  multiplyBy(matrix: MathType | Matrix): Matrix {
+    const y = (matrix instanceof Matrix) ? matrix.toArray() : matrix;
     const result = math.multiply(this.matrix, y);
     return new Matrix(result);
   }
@@ -70,5 +71,21 @@ export class Matrix {
   transpose(): Matrix {
     const result = math.transpose(this.matrix);
     return new Matrix(result);
+  }
+
+  /**
+   * Convenience wrapper for math.qr();
+   * auto-converts to DenseMatrix, as math.qr() doesn't currently work with SparseMatrix.
+   * @returns {Matrix}
+   * @memberof Matrix
+   */
+  qr(): any {
+    const dense = math.matrix(this.matrix, 'dense');
+    const qr = (math as any).qr(dense);
+    const qrArray = {
+      'Q': new Matrix(qr.Q, 'Q'),
+      'R': new Matrix(qr.R, 'R')
+    };
+    return qrArray;
   }
 }

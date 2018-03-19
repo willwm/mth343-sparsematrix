@@ -1,7 +1,7 @@
 import { Matrix } from './matrix';
 import * as math from 'mathjs';
 
-fdescribe('Matrix', () => {
+describe('Matrix', () => {
   const defaultName = 'A';
   const defaultArray = [[1, 2], [3, 4]];
 

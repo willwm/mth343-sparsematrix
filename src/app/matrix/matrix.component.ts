@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Matrix } from './matrix';
 import * as math from 'mathjs';
 
 @Component({
@@ -9,7 +10,7 @@ import * as math from 'mathjs';
 export class MatrixComponent implements OnInit {
 
   @Input() name: string;
-  @Input() matrix: mathjs.Matrix;
+  @Input() matrix: Matrix;
   matrixEquation: string;
 
   constructor() { }
@@ -20,14 +21,14 @@ export class MatrixComponent implements OnInit {
     }
   }
 
-  updateMatrix(name: string, matrix: mathjs.Matrix): void {
+  updateMatrix(name: string, matrix: Matrix): void {
     this.name = name;
     this.matrix = matrix;
     this.matrixEquation = `${name} = ${this.toTex(matrix)}`;
     console.log(name, matrix);
   }
 
-  toTex(matrix: mathjs.Matrix): string {
+  toTex(matrix: Matrix): string {
     const array = (matrix as any).toArray();
     let latex = '\\begin{bmatrix}\n';
     for (const row of array) {
