@@ -9,19 +9,19 @@
 
   <mat-grid-list cols="2" rowHeight="225px">
     <mat-grid-tile>
-      <ng-katex [equation]="matrixEquation"></ng-katex>
+      <app-matrix name="A" [matrix]="matrix"></app-matrix>
     </mat-grid-tile>
     <mat-grid-tile>
       <app-heatmap [matrix]="matrix" id="matrix"></app-heatmap>
     </mat-grid-tile>
     <mat-grid-tile>
-      <ng-katex [equation]="transposeEquation"></ng-katex>
+      <app-matrix name="B" [matrix]="transpose"></app-matrix>
     </mat-grid-tile>
     <mat-grid-tile>
       <app-heatmap [matrix]="transpose" id="transpose"></app-heatmap>
     </mat-grid-tile>
     <mat-grid-tile>
-      <ng-katex [equation]="multiplyEquation"></ng-katex>
+      <app-matrix name="C" [matrix]="multiply"></app-matrix>
     </mat-grid-tile>
     <mat-grid-tile>
       <app-heatmap [matrix]="multiply" id="multiply"></app-heatmap>
@@ -42,13 +42,13 @@
 
   <mat-grid-list cols="3" rowHeight="225px">
     <mat-grid-tile>
-      <ng-katex [equation]="qEquation"></ng-katex>
+      <app-matrix name="Q" [matrix]="q"></app-matrix>
     </mat-grid-tile>
     <mat-grid-tile>
-      <ng-katex [equation]="qTransposeEquation"></ng-katex>
+      <app-matrix name="Q^T" [matrix]="qTranspose"></app-matrix>
     </mat-grid-tile>
     <mat-grid-tile>
-      <ng-katex [equation]="rEquation"></ng-katex>
+      <app-matrix name="R" [matrix]="r"></app-matrix>
     </mat-grid-tile>
   </mat-grid-list>
 </mat-expansion-panel>

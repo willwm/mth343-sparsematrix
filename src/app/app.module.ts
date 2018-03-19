@@ -14,13 +14,15 @@ import { MathjsComponent } from './mathjs/mathjs.component';
 import { MatrixService } from './matrix.service';
 import { HeatmapComponent } from './plotly/heatmap/heatmap.component';
 import { StringifyService } from './stringify.service';
+import { MatrixComponent } from './matrix/matrix.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BluemathComponent,
     MathjsComponent,
-    HeatmapComponent
+    HeatmapComponent,
+    MatrixComponent
   ],
   imports: [
     BrowserModule,
