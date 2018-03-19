@@ -3,17 +3,21 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.2.
 
 Notable Dependencies:
-* https://www.npmjs.com/package/ng-katex
-* https://www.npmjs.com/package/mathjs
-* https://www.npmjs.com/package/@types/mathjs
-* https://www.npmjs.com/package/@bluemath/common
-* https://www.npmjs.com/package/@bluemath/linalg
-* https://www.npmjs.com/package/js-beautify
-* https://www.npmjs.com/package/prismjs
-* https://www.npmjs.com/package/plotly.js
+
+* Numeric Libraries
+  * https://www.npmjs.com/package/mathjs
+  * https://www.npmjs.com/package/@types/mathjs
+  * https://www.npmjs.com/package/ndarray
+
+* Display/Rendering
+  * https://www.npmjs.com/package/ng-katex
+  * https://www.npmjs.com/package/js-beautify
+  * https://www.npmjs.com/package/prismjs
+  * https://www.npmjs.com/package/plotly.js
 
 Related Links:
 * [UF Sparse Matrix Collection - sorted by id](https://www.cise.ufl.edu/research/sparse/matrices/list_by_id.html)
+* [The Matrix Market Top Ten](https://math.nist.gov/MatrixMarket/extreme.html)
 * [Using Computer Modern on the web](https://www.checkmyworking.com/cm-web-fonts/)
 * [Pandoc](https://pandoc.org/index.html)
     ```bash
