@@ -17,8 +17,6 @@ export class MathjsComponent implements OnInit {
   qTranspose: mathjs.Matrix;
   r: mathjs.Matrix;
 
-  highlighted = false;
-
   constructor() {}
 
   ngOnInit() {

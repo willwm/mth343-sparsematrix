@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import * as math from 'mathjs';
 
 @Component({
   selector: 'app-matrix',
@@ -14,8 +15,16 @@ export class MatrixComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.matrixEquation = `${this.name} = ${this.toTex(this.matrix)}`;
-    console.log(this.name, this.matrix);
+    if (this.name && this.matrix) {
+      this.updateMatrix(this.name, this.matrix);
+    }
+  }
+
+  updateMatrix(name: string, matrix: mathjs.Matrix): void {
+    this.name = name;
+    this.matrix = matrix;
+    this.matrixEquation = `${name} = ${this.toTex(matrix)}`;
+    console.log(name, matrix);
   }
 
   toTex(matrix: mathjs.Matrix): string {

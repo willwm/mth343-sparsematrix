@@ -1,13 +1,15 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { KatexModule } from 'ng-katex';
 
-import { LatexService } from '../latex.service';
-import { MathjsComponent } from './mathjs.component';
-import { HeatmapComponent } from '../plotly/heatmap/heatmap.component';
 import { HighlightService } from '../highlight.service';
-import { MatrixService } from '../matrix.service';
+import { MatrixComponent } from '../matrix/matrix.component';
+import { HeatmapComponent } from '../plotly/heatmap/heatmap.component';
 import { StringifyService } from '../stringify.service';
+import { MathjsComponent } from './mathjs.component';
 
 describe('MathjsComponent', () => {
   let component: MathjsComponent;
@@ -16,17 +18,19 @@ describe('MathjsComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
+        HeatmapComponent,
         MathjsComponent,
-        HeatmapComponent
+        MatrixComponent
       ],
       imports: [
         FormsModule,
-        KatexModule
+        KatexModule,
+        BrowserAnimationsModule,
+        MatGridListModule,
+        MatExpansionModule
       ],
       providers: [
         HighlightService,
-        LatexService,
-        MatrixService,
         StringifyService
       ]
     })

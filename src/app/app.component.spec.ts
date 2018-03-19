@@ -1,16 +1,18 @@
-import { TestBed, async } from '@angular/core/testing';
-import { BrowserModule, Title } from '@angular/platform-browser';
+import { async, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
 import { KatexModule } from 'ng-katex';
 
 import { AppComponent } from './app.component';
 import { BluemathComponent } from './bluemath/bluemath.component';
-import { MathjsComponent } from './mathjs/mathjs.component';
-import { LatexService } from './latex.service';
-import { HeatmapComponent } from './plotly/heatmap/heatmap.component';
 import { HighlightService } from './highlight.service';
-import { MatrixService } from './matrix.service';
+import { MathjsComponent } from './mathjs/mathjs.component';
+import { HeatmapComponent } from './plotly/heatmap/heatmap.component';
 import { StringifyService } from './stringify.service';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatrixComponent } from './matrix/matrix.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -18,19 +20,21 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent,
         BluemathComponent,
+        HeatmapComponent,
         MathjsComponent,
-        HeatmapComponent
+        MatrixComponent
       ],
       imports: [
         BrowserModule,
         FormsModule,
-        KatexModule
+        KatexModule,
+        BrowserAnimationsModule,
+        MatGridListModule,
+        MatExpansionModule
       ],
       providers: [
-        LatexService,
         HighlightService,
-        StringifyService,
-        MatrixService
+        StringifyService
       ]
     }).compileComponents();
   }));

@@ -2,12 +2,12 @@
   <mat-expansion-panel-header>
     <mat-panel-title>
       <h2>Matrices:
-        <i>A, B, C</i>
+        <i>A, B = A<sup>T</sup>, C = AB</i>
       </h2>
     </mat-panel-title>
   </mat-expansion-panel-header>
 
-  <mat-grid-list cols="2" rowHeight="225px">
+  <mat-grid-list cols="2" rowHeight="2:1">
     <mat-grid-tile>
       <app-matrix name="A" [matrix]="matrix"></app-matrix>
     </mat-grid-tile>
@@ -40,7 +40,7 @@
     </mat-panel-title>
   </mat-expansion-panel-header>
 
-  <mat-grid-list cols="3" rowHeight="225px">
+  <mat-grid-list cols="3" rowHeight="2:1">
     <mat-grid-tile>
       <app-matrix name="Q" [matrix]="q"></app-matrix>
     </mat-grid-tile>
