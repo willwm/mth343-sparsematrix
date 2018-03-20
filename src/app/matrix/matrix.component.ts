@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Matrix } from './matrix';
 import * as math from 'mathjs';
 
@@ -7,7 +7,7 @@ import * as math from 'mathjs';
   templateUrl: './matrix.component.html',
   styleUrls: ['./matrix.component.css']
 })
-export class MatrixComponent implements OnInit {
+export class MatrixComponent implements OnInit, OnChanges {
 
   @Input() name: string;
   @Input() matrix: Matrix;
@@ -16,12 +16,15 @@ export class MatrixComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    if (this.name && this.matrix) {
-      this.updateMatrix(this.name, this.matrix);
-    }
+    this.updateMatrix(this.name, this.matrix);
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.updateMatrix(this.name, this.matrix);
   }
 
   updateMatrix(name: string, matrix: Matrix): void {
+    if (!name || ! matrix) { return; }
     this.name = name;
     this.matrix = matrix;
     this.matrixEquation = `${name} = ${this.toTex(matrix)}`;

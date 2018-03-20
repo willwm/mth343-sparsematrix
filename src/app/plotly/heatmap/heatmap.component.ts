@@ -45,8 +45,8 @@ export class HeatmapComponent implements OnInit, OnChanges {
         autorange: 'reversed',
         ticklen: 0
       },
-      width: 350,
-      height: 250,
+      // width: 350,
+      // height: 250,
       margin: {
         t: 35, l: 40, b: 35, r: 40
       }

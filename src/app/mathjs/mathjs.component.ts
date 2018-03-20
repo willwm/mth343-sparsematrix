@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import * as math from 'mathjs';
 
 import { Matrix } from '../matrix/matrix';
@@ -11,6 +12,7 @@ import { Matrix } from '../matrix/matrix';
 export class MathjsComponent implements OnInit {
   // tslint:disable-next-line:max-line-length
   input = '[[1,2,3,4,5,6,7,8], [0,1,2,3,4,5,6,7], [0,0,1,2,3,4,5,6], [0,0,0,1,2,3,4,5], [0,0,0,0,1,2,3,4], [0,0,0,0,0,1,2,3], [0,0,0,0,0,0,1,2], [0,0,0,0,0,0,0,1]]';
+  inputArray;
 
   matrix: Matrix;
   transpose: Matrix;
@@ -19,13 +21,38 @@ export class MathjsComponent implements OnInit {
   qTranspose: Matrix;
   r: Matrix;
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
   ngOnInit() {
-    const matrix = new Matrix(this.input, 'A');
+    this.loadDataFromFile();
+  }
 
-    this.updateMatrix(matrix);
-    this.updateQR(matrix);
+  loadDataFromFile(url = '/data/ibm32.mtx.json') {
+    this.http.get(url).subscribe(data => {
+      this.inputArray = this.parseMtx(data);
+
+      console.log(this.inputArray);
+      const matrix = new Matrix(this.inputArray, 'A');
+
+      this.updateMatrix(matrix);
+      this.updateQR(matrix);
+    });
+  }
+
+  parseMtx(json) {
+    const dim = json.dimensions;
+    const data = json.data;
+    const matrix = new Array(dim[0])
+      .fill(0)
+      .map(() => new Array(dim[1]).fill(0));
+    for (const d of data) {
+      // console.log("matrix:", matrix);
+      const row = d[0] - 1;
+      const col = d[1] - 1;
+      // console.log("row:", row, "col:", col);
+      matrix[col][row] = 1;
+    }
+    return matrix;
   }
 
   updateMatrix(matrix: Matrix): void {

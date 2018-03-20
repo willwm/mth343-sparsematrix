@@ -16,3 +16,5 @@ pre, pre>code, .monospace {
   font-family: 'Computer Modern Typewriter', monospace;
   font-size: 0.85em;
 }
+
+.katex { font-size: 0.85em !important; }
