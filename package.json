@@ -17,7 +17,7 @@
     "e2e": "ng e2e",
     "surge": "npm run build && surge --project ./dist --domain mth343-sparsematrix.surge.sh",
     "docs": "npm run typedoc -- --options typedoc.json --exclude '**/*.spec.ts' ./src/app/",
-    "typedoc": "typedoc"
+    "typedoc": "typedoc --out src/assets/docs --mode file --module commonjs ./src/app/matrix"
   },
   "private": true,
   "dependencies": {

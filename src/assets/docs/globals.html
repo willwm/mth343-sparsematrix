@@ -63,79 +63,91 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<div class="tsd-panel tsd-typography">
-				<h1 id="mth343-sparsematrix">mth343-sparsematrix</h1>
-				<p>This project was generated with <a href="https://github.com/angular/angular-cli">Angular CLI</a> version 1.7.2.</p>
-				<p>Notable Dependencies:</p>
-				<ul>
-					<li><p>Numeric Libraries</p>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section ">
+							<h3>Classes</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-class"><a href="classes/arnoldi.html" class="tsd-kind-icon">Arnoldi</a></li>
+								<li class="tsd-kind-class"><a href="classes/matrix.html" class="tsd-kind-icon">Matrix</a></li>
+								<li class="tsd-kind-class"><a href="classes/matrixcomponent.html" class="tsd-kind-icon">Matrix<wbr>Component</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Type aliases</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-type-alias"><a href="globals.html#matharray" class="tsd-kind-icon">Math<wbr>Array</a></li>
+								<li class="tsd-kind-type-alias"><a href="globals.html#mathexpression" class="tsd-kind-icon">Math<wbr>Expression</a></li>
+								<li class="tsd-kind-type-alias"><a href="globals.html#mathtype" class="tsd-kind-icon">Math<wbr>Type</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Type aliases</h2>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias">
+					<a name="matharray" class="tsd-anchor"></a>
+					<h3>Math<wbr>Array</h3>
+					<div class="tsd-signature tsd-kind-icon">Math<wbr>Array<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
 						<ul>
-							<li><a href="https://www.npmjs.com/package/mathjs">https://www.npmjs.com/package/mathjs</a></li>
-							<li><a href="https://www.npmjs.com/package/@types/mathjs">https://www.npmjs.com/package/@types/mathjs</a></li>
-							<li><a href="https://www.npmjs.com/package/ndarray">https://www.npmjs.com/package/ndarray</a></li>
+							<li>Defined in <a href="https://github.com/willwm/mth343-sparsematrix/blob/21254a5/src/app/matrix/matrix.ts#L3">matrix.ts:3</a></li>
 						</ul>
-					</li>
-					<li><p>Display/Rendering</p>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias">
+					<a name="mathexpression" class="tsd-anchor"></a>
+					<h3>Math<wbr>Expression</h3>
+					<div class="tsd-signature tsd-kind-icon">Math<wbr>Expression<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> | </span><a href="globals.html#matharray" class="tsd-signature-type">MathArray</a></div>
+					<aside class="tsd-sources">
 						<ul>
-							<li><a href="https://www.npmjs.com/package/ng-katex">https://www.npmjs.com/package/ng-katex</a></li>
-							<li><a href="https://www.npmjs.com/package/js-beautify">https://www.npmjs.com/package/js-beautify</a></li>
-							<li><a href="https://www.npmjs.com/package/prismjs">https://www.npmjs.com/package/prismjs</a></li>
-							<li><a href="https://www.npmjs.com/package/plotly.js">https://www.npmjs.com/package/plotly.js</a></li>
+							<li>Defined in <a href="https://github.com/willwm/mth343-sparsematrix/blob/21254a5/src/app/matrix/matrix.ts#L5">matrix.ts:5</a></li>
 						</ul>
-					</li>
-				</ul>
-				<p>Related Links:</p>
-				<ul>
-					<li><a href="https://www.cise.ufl.edu/research/sparse/matrices/list_by_id.html">UF Sparse Matrix Collection - sorted by id</a></li>
-					<li><a href="https://math.nist.gov/MatrixMarket/extreme.html">The Matrix Market Top Ten</a></li>
-					<li><a href="https://www.checkmyworking.com/cm-web-fonts/">Using Computer Modern on the web</a></li>
-					<li><a href="https://pandoc.org/index.html">Pandoc</a><pre><code class="lang-bash">  <span class="hljs-comment"># Use Pandoc to generate Writeup.pdf from Writeup.md:</span>
-  pandoc .\Writeup.md -o .\Writeup.pdf
-</code></pre>
-					</li>
-				</ul>
-				<h2 id="development-server">Development server</h2>
-				<p>Run <code>ng serve</code> for a dev server. Navigate to <code>http://localhost:4200/</code>. The app will automatically reload if you change any of the source files.</p>
-				<h2 id="code-scaffolding">Code scaffolding</h2>
-				<p>Run <code>ng generate component component-name</code> to generate a new component. You can also use <code>ng generate directive|pipe|service|class|guard|interface|enum|module</code>.</p>
-				<h2 id="build">Build</h2>
-				<p>Run <code>ng build</code> to build the project. The build artifacts will be stored in the <code>dist/</code> directory. Use the <code>-prod</code> flag for a production build.</p>
-				<h2 id="running-unit-tests">Running unit tests</h2>
-				<p>Run <code>ng test</code> to execute the unit tests via <a href="https://karma-runner.github.io">Karma</a>.</p>
-				<h2 id="running-end-to-end-tests">Running end-to-end tests</h2>
-				<p>Run <code>ng e2e</code> to execute the end-to-end tests via <a href="http://www.protractortest.org/">Protractor</a>.</p>
-				<h2 id="further-help">Further help</h2>
-				<p>To get more help on the Angular CLI use <code>ng help</code> or go check out the <a href="https://github.com/angular/angular-cli/blob/master/README.md">Angular CLI README</a>.</p>
-			</div>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias">
+					<a name="mathtype" class="tsd-anchor"></a>
+					<h3>Math<wbr>Type</h3>
+					<div class="tsd-signature tsd-kind-icon">Math<wbr>Type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><a href="globals.html#matharray" class="tsd-signature-type">MathArray</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Matrix</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/willwm/mth343-sparsematrix/blob/21254a5/src/app/matrix/matrix.ts#L4">matrix.ts:4</a></li>
+						</ul>
+					</aside>
+				</section>
+			</section>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
 			<nav class="tsd-navigation primary">
 				<ul>
-					<li class="globals  ">
+					<li class="globals current ">
 						<a href="globals.html"><em>Globals</em></a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_arnoldi_.html">"arnoldi"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_arnoldi_spec_.html">"arnoldi.spec"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_matrix_.html">"matrix"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_matrix_component_.html">"matrix.component"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_matrix_component_spec_.html">"matrix.component.spec"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_matrix_spec_.html">"matrix.spec"</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-class">
+						<a href="classes/arnoldi.html" class="tsd-kind-icon">Arnoldi</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/matrix.html" class="tsd-kind-icon">Matrix</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/matrixcomponent.html" class="tsd-kind-icon">Matrix<wbr>Component</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#matharray" class="tsd-kind-icon">Math<wbr>Array</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#mathexpression" class="tsd-kind-icon">Math<wbr>Expression</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#mathtype" class="tsd-kind-icon">Math<wbr>Type</a>
+					</li>
 				</ul>
 			</nav>
 		</div>
