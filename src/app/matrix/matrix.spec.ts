@@ -19,7 +19,7 @@ fdescribe('Matrix', () => {
     });
   });
 
-  fdescribe('(static) concat()', () => {
+  describe('(static) concat()', () => {
     it('should combine Array<Matrix> into a single, combined Matrix', () => {
       const matrices = [
         new Matrix([1, 2, 3], 'v1'),
@@ -79,6 +79,14 @@ fdescribe('Matrix', () => {
       v.resize([3]);
 
       expect(v.toArray()).toEqual([1, 2, 3]);
+    });
+  });
+
+  fdescribe('flatten()', () => {
+    it('should flatten a 2D array to an expected 1D array', () => {
+      const A = new Matrix([[1, 2, 3], [4, 5, 6]], 'A');
+      const flat = A.flatten();
+      expect(flat).toEqual([1, 2, 3, 4, 5, 6]);
     });
   });
 

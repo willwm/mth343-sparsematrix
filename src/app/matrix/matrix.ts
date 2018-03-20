@@ -56,6 +56,11 @@ export class Matrix {
     this.matrix.resize(newSize, defaultValue);
   }
 
+  flatten(): number[] {
+    const flattened = math.flatten(this.matrix);
+    return (flattened as any).toArray();
+  }
+
   rows(): number {
     const size = this.size();
     return (size.length === 1) ? 1 : size[0];

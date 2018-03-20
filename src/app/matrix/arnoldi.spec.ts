@@ -1,7 +1,7 @@
 import { Arnoldi } from './arnoldi';
 import { Matrix } from './matrix';
 
-fdescribe('Arnoldi', () => {
+describe('Arnoldi', () => {
 
   describe('constructor()', () => {
     it('should create an instance', () => {
@@ -48,12 +48,29 @@ fdescribe('Arnoldi', () => {
     });
   });
 
+  describe('getTridiagonal()', () => {
+    it('should get T=(Q^T)AQ, for a given A and m', () => {
+      const A = new Matrix([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 'A');
+      const arnoldi = new Arnoldi(A, 2);
+      const T = arnoldi.getTridiagonal();
+      expect(T.rows()).toEqual(2);
+      expect(T.cols()).toEqual(2);
+    });
+
+    it('should get T=(Q^T)AQ, for a given A and omitted m', () => {
+      const A = new Matrix([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 'A');
+      const arnoldi = new Arnoldi(A);
+      const T = arnoldi.getTridiagonal();
+      expect(T.rows()).toEqual(3);
+      expect(T.cols()).toEqual(3);
+    });
+  });
+
   describe('iterate()', () => {
     it('should return the base case, if m <= 2', () => {
       const A = new Matrix([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 'A');
       const arnoldi = new Arnoldi(A, 1);
       const Q = arnoldi.iterate();
-      console.log('Q:', Q);
       expect(Q.rows()).toEqual(2);
       expect(Q.cols()).toEqual(3);
     });
@@ -62,7 +79,6 @@ fdescribe('Arnoldi', () => {
       const A = new Matrix([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 'A');
       const arnoldi = new Arnoldi(A, 3);
       const Q = arnoldi.iterate();
-      console.log('Q:', Q);
       expect(Q.rows()).toEqual(3);
       expect(Q.cols()).toEqual(3);
     });

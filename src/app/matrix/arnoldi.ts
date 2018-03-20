@@ -29,11 +29,17 @@ export class Arnoldi {
     this.k = 2;
   }
 
+  getTridiagonal(): Matrix {
+    const Q = this.iterate();
+    const Qt = Q.transpose('Q^T');
+    const QtA = Qt.multiplyBy(this.A);
+    const QtAQ = QtA.multiplyBy(Q);
+
+    return QtAQ;
+  }
+
   iterate(m = this.m, k = this.k): Matrix {
     // Given: v1 (=v[0]), q1 (=q[0]), v2 (=v[1]), q2 (=q[0]) are defined and k = 2.
-    if (k >= m) {
-      return Matrix.concat(this.q, 'Q');
-    }
 
     for (k; k < m; k++) {
       const vk = this.vk(this.A, this.q[k - 1]);
@@ -42,7 +48,8 @@ export class Arnoldi {
       this.q[k] = qk;
     }
 
-    return Matrix.concat(this.q, 'Q');
+    const Qt = Matrix.concat(this.q, 'Q^T');
+    return Qt.transpose('Q');
   }
 
   q2(q1 = this.q1, v2: Matrix): Matrix {
