@@ -33,6 +33,14 @@ In addition to the benefit of the inherent portability of constructing an applic
 
 There are a variety of well-established numerical libraries available, including BLAS, EISPACK, LAPACK, and SciPy, but relatively few (that I am aware of) at the moment which are available for JavaScript, and even fewer available for TypeScript. 
 
+While planning my implementation approach, I investigated the following JavaScript/TypeScript libraries for use in this project:
+  * Bluemath
+  * Math.js
+  * scijs
+
+I first chose Bluemath (@bluemath/common, @bluemath/linalg), as it was directly compatible with TypeScript, but shifted to Math.js early on, mainly due to the fact that Math.js had a .transpose() method available. Unfortunately, the TypeScript definitions for the mathjs package are out of date, so I had to implement more workarounds than I would have liked, to add support for the new API methods that did not have corresponding definitions in the @types/mathjs package.
+
+While all of the libraries that I investigated have similar core features, I found that both Bluemath and scijs use an NDArray implementation internally, which appears to be a better option for matrix manipulation than I found with Math.js' DenseMatrix and SparseMatrix implementations.
 
 # Analysis
 
@@ -58,58 +66,4 @@ Math.js does not (currently) have a method to calculate the eigenvalues of a mat
 
 ## Conclusion
 
-* TODO: Review libraries that I chose for this implementation
-  * Bluemath
-  * Math.js
-  * scijs
-
-* TODO: Compare/contrast matrix implementations in the libraries above
-  * Bluemath and scijs both use NDArray
-  * Math.js uses DenseMatrix and SparseMatrix
-
-* TODO: Describe performance of each of the implementation approaches
-  * Discuss the performance analysis provided by <https://github.com/mikolalysenko/ndarray-experiments>
-
-
-----
-
-# References
-
-## Algorithms
-
-### Compressed Sparse Row (CSR)
-
-[Compressed Sparse Row](https://en.wikipedia.org/wiki/Sparse_matrix#Compressed_sparse_row_(CSR,_CRS_or_Yale_format)) 
-
-Related:
-
-* [Sparse matrix](https://en.wikipedia.org/wiki/Sparse_matrix)
-
-### Lanczos
-
-[Lanczos algorithm](https://en.wikipedia.org/wiki/Lanczos_algorithm)
-
-Related:
-
-* [Generalized minimal residual method](https://en.wikipedia.org/wiki/Generalized_minimal_residual_method)
-* [Matrix-free methods](https://en.wikipedia.org/wiki/Matrix-free_methods)
-* [Arnoldi iteration](https://en.wikipedia.org/wiki/Arnoldi_iteration)
-* [Householder transformation](https://en.wikipedia.org/wiki/Householder_transformation)
-* [Singular-value decomposition](https://en.wikipedia.org/wiki/Singular-value_decomposition)
-
-## Application Libraries
-
-### LAPACK and OpenBLAS
-
-* [LAPACK](http://www.netlib.org/lapack/index.html)
-* [OpenBLAS](https://en.wikipedia.org/wiki/OpenBLAS)
-
-### JavaScript Libraries
-
-* [math.js | an extensive math library for JavaScript and Node.js](http://mathjs.org/)
-* [scijs/packages](http://scijs.net/packages/#scijs/ndarray)
-
-## Data Sets
-
-* [The Matrix Market Top Ten](https://math.nist.gov/MatrixMarket/extreme.html)
-* [UF Sparse Matrix Collection - sorted by id](https://www.cise.ufl.edu/research/sparse/matrices/list_by_id.html)
+I should have realized earlier in the process that I was quickly headed down a rabbit-hole and pulled myself up to the surface for some additional perspective. However, I am incredibly pleased with all that I've learned through my investigation for this assignment, and I have aquired a wealth of knowledge about numerical libraries, their implementations, and about linear algebra algorithms in general.

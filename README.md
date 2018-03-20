@@ -25,26 +25,43 @@ Related Links:
     pandoc .\Writeup.md -o .\Writeup.pdf
     ```
 
-## Development server
+# References
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Algorithms
 
-## Code scaffolding
+### Compressed Sparse Row (CSR)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+[Compressed Sparse Row](https://en.wikipedia.org/wiki/Sparse_matrix#Compressed_sparse_row_(CSR,_CRS_or_Yale_format)) 
 
-## Build
+Related:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+* [Sparse matrix](https://en.wikipedia.org/wiki/Sparse_matrix)
 
-## Running unit tests
+### Lanczos
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+[Lanczos algorithm](https://en.wikipedia.org/wiki/Lanczos_algorithm)
 
-## Running end-to-end tests
+Related:
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+* [Generalized minimal residual method](https://en.wikipedia.org/wiki/Generalized_minimal_residual_method)
+* [Matrix-free methods](https://en.wikipedia.org/wiki/Matrix-free_methods)
+* [Arnoldi iteration](https://en.wikipedia.org/wiki/Arnoldi_iteration)
+* [Householder transformation](https://en.wikipedia.org/wiki/Householder_transformation)
+* [Singular-value decomposition](https://en.wikipedia.org/wiki/Singular-value_decomposition)
 
-## Further help
+## Application Libraries
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+### LAPACK and OpenBLAS
+
+* [LAPACK](http://www.netlib.org/lapack/index.html)
+* [OpenBLAS](https://en.wikipedia.org/wiki/OpenBLAS)
+
+### JavaScript Libraries
+
+* [math.js | an extensive math library for JavaScript and Node.js](http://mathjs.org/)
+* [scijs/packages](http://scijs.net/packages/#scijs/ndarray)
+
+## Data Sets
+
+* [The Matrix Market Top Ten](https://math.nist.gov/MatrixMarket/extreme.html)
+* [UF Sparse Matrix Collection - sorted by id](https://www.cise.ufl.edu/research/sparse/matrices/list_by_id.html)
