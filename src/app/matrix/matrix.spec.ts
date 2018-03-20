@@ -101,4 +101,27 @@ describe('Matrix', () => {
     expect(sMatrix.isSymmetric()).toEqual(true);
     expect(nsMatrix.isSymmetric()).toEqual(false);
   });
+
+  it('should return the correct size() for a vector', () => {
+    const v = new Matrix([1, 2, 3], 'v');
+    const size = v.size();
+    expect(size).toEqual([3]);
+  });
+
+  it('should return the correct size() for a matrix', () => {
+    const A = new Matrix(defaultArray, defaultName);
+    const size = A.size();
+    expect(size).toEqual([2, 2]);
+  });
+
+  it('should correctly determine if the Matrix instance isVector()', () => {
+    const v = new Matrix([1, 2, 3], 'v');
+    expect(v.isVector()).toEqual(true);
+
+    const vT = v.transpose('v^T');
+    expect(vT.isVector()).toEqual(true);
+
+    const A = new Matrix(defaultArray, defaultName);
+    expect(A.isVector()).toEqual(false);
+  });
 });

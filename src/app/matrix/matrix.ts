@@ -52,6 +52,12 @@ export class Matrix {
     return result === 0;
   }
 
+  isVector(): boolean {
+    const size = this.matrix.size();
+    const length = size.length;
+    return (length === 1 || (length === 2 && size[0] === 1));
+  }
+
   /**
    * Convenience wrapper for math.multiply() that uses this Matrix instance as the first parameter.
    * @param {(MathArray | Matrix)} matrix
@@ -75,20 +81,16 @@ export class Matrix {
     return result as number;
   }
 
-  normalize(name?: string): Matrix {
-    const l2Norm = math.norm(this.matrix);
-    const result = math.divide(this.matrix, l2Norm) as mathjs.Matrix;
-    return new Matrix(result, name);
-  }
-
   /**
-   * Convenience wrapper for math.transpose()
-   * @param {string} name (Optional) name to assign to the result Matrix instance
+   * Constructs the unit vector (L2-norm),
+   * from dividing this.matrix by math.norm(this.matrix)
+   * @param {string} [name] (Optional) name to assign to the result Matrix instance
    * @returns {Matrix}
    * @memberof Matrix
    */
-  transpose(name?: string): Matrix {
-    const result = math.transpose(this.matrix);
+  normalize(name?: string): Matrix {
+    const l2Norm = math.norm(this.matrix);
+    const result = math.divide(this.matrix, l2Norm) as mathjs.Matrix;
     return new Matrix(result, name);
   }
 
@@ -106,5 +108,26 @@ export class Matrix {
       R: new Matrix(qr.R, 'R')
     };
     return qrArray;
+  }
+
+  /**
+   * Convenience wrapper for this.matrix.size()
+   * @returns {number[]}
+   * @memberof Matrix
+   */
+  size(): number[] {
+    const size = this.matrix.size();
+    return size;
+  }
+
+  /**
+   * Convenience wrapper for math.transpose()
+   * @param {string} name (Optional) name to assign to the result Matrix instance
+   * @returns {Matrix}
+   * @memberof Matrix
+   */
+  transpose(name?: string): Matrix {
+    const result = math.transpose(this.matrix);
+    return new Matrix(result, name);
   }
 }
