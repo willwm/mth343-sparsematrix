@@ -11,7 +11,7 @@ export type MathExpression = string | string[] | MathArray;
  * @class Matrix
  */
 export class Matrix {
-  private matrix: mathjs.Matrix;
+  protected matrix: mathjs.Matrix;
 
   /**
    * Creates an instance of Matrix.
@@ -20,11 +20,25 @@ export class Matrix {
    * @memberof Matrix
    */
   constructor(
-    private data: string | MathType,
-    public name?: string
+    protected data: string | MathType,
+    readonly name?: string
   ) {
     const mData = typeof data === 'string' ? JSON.parse(data) : data;
     this.matrix = math.matrix(mData);
+  }
+
+  get(index: Array<number>): number {
+    const result = this.matrix.get(index);
+    return result as number;
+  }
+
+  set(index: Array<number>, value: number): void {
+    this.matrix.set(index, value);
+  }
+
+  resize(newSize: Array<number>, defaultValue?: number): void {
+    defaultValue = defaultValue || 0;
+    this.matrix.resize(newSize, defaultValue);
   }
 
   rows(): number {

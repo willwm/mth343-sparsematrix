@@ -1,8 +1,7 @@
 import { Matrix } from './matrix';
 import * as math from 'mathjs';
 
-fdescribe('Matrix', () => {
-
+describe('Matrix', () => {
   describe('constructor()', () => {
     it('should create an instance from an Array and string, and set instance properties accordingly', () => {
       const matrix = new Matrix([[1, 2], [3, 4]], 'A');
@@ -17,6 +16,56 @@ fdescribe('Matrix', () => {
       expect(matrix).toBeTruthy();
       expect(matrix.name).toEqual('A');
       expect(matrix.toArray()).toEqual([[1, 2], [3, 4]]);
+    });
+  });
+
+  describe('get', () => {
+    it('should return expected result for a given vector index', () => {
+      const v = new Matrix([1, 2, 3], 'v');
+      const result = v.get([2]); // get() is zero-based
+
+      expect(result).toEqual(3);
+    });
+
+    it('should return expected result for a given matrix index', () => {
+      const A = new Matrix([[1, 2, 3], [4, 5, 6]], 'A');
+      const result = A.get([1, 1]); // get() is zero-based
+
+      expect(result).toEqual(5);
+    });
+  });
+
+  describe('set', () => {
+    it('should set expected value for a given vector index and value', () => {
+      const v = new Matrix([1, 2, 3], 'v');
+      v.set([2], 7);
+      const result = v.get([2]); // get() is zero-based
+
+      expect(result).toEqual(7);
+    });
+
+    it('should set expected value for a given matrix index and value', () => {
+      const A = new Matrix([[1, 2, 3], [4, 5, 6]], 'A');
+      A.set([1, 1], 9);
+      const result = A.get([1, 1]); // get() is zero-based
+
+      expect(result).toEqual(9);
+    });
+  });
+
+  describe('resize()', () => {
+    it('should expand a vector for a given new size and defaultValue', () => {
+      const v = new Matrix([1, 2, 3], 'v');
+      v.resize([5], 0);
+
+      expect(v.toArray()).toEqual([1, 2, 3, 0, 0]);
+    });
+
+    it('should reduce a vector for a given new size and defaultValue', () => {
+      const v = new Matrix([1, 2, 3, 4, 5], 'v');
+      v.resize([3]);
+
+      expect(v.toArray()).toEqual([1, 2, 3]);
     });
   });
 
@@ -164,5 +213,4 @@ fdescribe('Matrix', () => {
       expect(vT.rows()).toEqual(1);
     });
   });
-
 });
