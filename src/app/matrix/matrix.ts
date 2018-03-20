@@ -1,8 +1,8 @@
 import * as math from 'mathjs';
 
 export type MathArray = number[] | number[][];
-export type MathType = number|MathArray;
-export type MathExpression = string|string[]|MathArray;
+export type MathType = number | MathArray;
+export type MathExpression = string | string[] | MathArray;
 
 /**
  * Convenience wrapper for mathjs.Matrix for easier TypeScript consumption,
@@ -23,8 +23,8 @@ export class Matrix {
     private data: string | MathArray | mathjs.Matrix,
     public name?: string
   ) {
-    const mData = (typeof data === 'string') ? JSON.parse(data) : data;
-    this.matrix = math.matrix(mData, 'sparse');
+    const mData = typeof data === 'string' ? JSON.parse(data) : data;
+    this.matrix = math.matrix(mData);
   }
 
   /**
@@ -49,7 +49,7 @@ export class Matrix {
   isSymmetric(): boolean {
     const transpose = math.transpose(this.matrix);
     const result = (math as any).compareNatural(transpose, this.matrix);
-    return (result === 0);
+    return result === 0;
   }
 
   /**
@@ -60,9 +60,19 @@ export class Matrix {
    * @memberof Matrix
    */
   multiplyBy(matrix: MathType | Matrix, name?: string): Matrix {
-    const y = (matrix instanceof Matrix) ? matrix.toArray() : matrix;
+    const y = matrix instanceof Matrix ? matrix.toArray() : matrix;
     const result = math.multiply(this.matrix, y);
     return new Matrix(result, name);
+  }
+  /**
+   * Convenience wrapper for math.norm() that uses this Matrix instance as the first parameter.
+   * @param {string} name (Optional) name to assign to the result Matrix instance
+   * @returns {number}
+   * @memberof Matrix
+   */
+  norm(name?: string): number {
+    const result = math.norm(this.matrix);
+    return result as number;
   }
 
   /**
@@ -86,8 +96,8 @@ export class Matrix {
     const dense = math.matrix(this.matrix, 'dense');
     const qr = (math as any).qr(dense);
     const qrArray = {
-      'Q': new Matrix(qr.Q, 'Q'),
-      'R': new Matrix(qr.R, 'R')
+      Q: new Matrix(qr.Q, 'Q'),
+      R: new Matrix(qr.R, 'R')
     };
     return qrArray;
   }

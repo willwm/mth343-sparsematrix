@@ -47,7 +47,7 @@ describe('Matrix', () => {
     const vector = new Matrix([2, 2], 'v');
     const result = matrix.multiplyBy(vector, 'Av');
     const resultArray = result.toArray();
-    expect(resultArray).toEqual([[6], [14]]);
+    expect(resultArray).toEqual([6, 14]);
   });
 
   it('should correctly multiplyBy() an Array', () => {
@@ -62,6 +62,12 @@ describe('Matrix', () => {
     const B = new Matrix([[2, 0], [0, 2]], 'B');
     const result = A.multiplyBy(B, 'C');
     expect(result.toArray()).toEqual([[2, 4], [6, 8]]);
+  });
+
+  it('should calculate the norm() for a vector', () => {
+    const v = new Matrix([1, 2, 3], 'v');
+    const vNorm = v.norm('||v||');
+    expect(vNorm).toEqual(math.sqrt(14));
   });
 
   it('should return the matrix transpose from transpose(), and should not modify the original', () => {
