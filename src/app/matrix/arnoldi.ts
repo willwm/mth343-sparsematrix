@@ -33,6 +33,11 @@ export class Arnoldi {
     return q2;
   }
 
+  v2(A: Matrix, q1: Matrix): Matrix {
+    const v2 = A.multiplyBy(q1, 'v2');
+    return v2;
+  }
+
   qk(vk: Matrix, qPrev: Array<Matrix>, k: number) {
     let qtvkqAccumulator: Matrix = null;
     for (const q of qPrev) {

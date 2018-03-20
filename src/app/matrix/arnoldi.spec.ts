@@ -55,19 +55,28 @@ describe('Arnoldi', () => {
     });
   });
 
+  describe('v2()', () => {
+    it('should return Aq1 from v2()', () => {
+      const A = new Matrix([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 'A');
+      const arnoldi = new Arnoldi(A);
+      const q1 = arnoldi.q1;
+      const v2 = arnoldi.v2(A, q1);
+      const Aq1 = A.multiplyBy(q1);
+      expect(v2.toArray()).toEqual(Aq1.toArray());
+    });
+  });
+
   describe('qk()', () => {
     it('should return a normalized (v2 - q1t*v2*q1), from qk(v2, [q1], 2)', () => {
       const A = new Matrix([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 'A');
-      const q1 = new Matrix([1, 0, 0], 'q1');
-      const v1 = new Matrix([1, 0, 0], 'v1');
       const arnoldi = new Arnoldi(A);
 
-      const Aq1 = A.multiplyBy(q1, 'Aq1');
-      const v2 = arnoldi.vk(A, q1, 2);
-      expect(v2.toArray()).toEqual(Aq1.toArray());
+      const q1 = arnoldi.q1;
+      const v2 = arnoldi.vk(A, arnoldi.q1, 2);
 
-      const q2 = arnoldi.qk(v2, [q1], 2);
-      expect(q2.toArray()).toEqual(arnoldi.q2(q1, v2).toArray());
+      const qk = arnoldi.qk(v2, [q1], 2);
+      const q2 = arnoldi.q2(q1, v2);
+      expect(qk.toArray()).toEqual(q2.toArray());
     });
   });
 
