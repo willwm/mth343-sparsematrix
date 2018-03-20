@@ -24,13 +24,25 @@ export class Arnoldi {
     this.q1 = this.v1.normalize('q1');
     this.q[0] = this.q1;
 
-    const v2 = this.v2();
-    const q2 = this.q2(this.q1, v2);
+    this.v[1] = this.v2();
+    this.q[1] = this.q2(this.q1, this.v[1]);
+    this.k = 2;
   }
 
-  iterate() {
-    // Given: v1 (=v[0]), q1 (=q[0]), and k = 0 are defined.
+  iterate(m = this.m, k = this.k): Matrix {
+    // Given: v1 (=v[0]), q1 (=q[0]), v2 (=v[1]), q2 (=q[0]) are defined and k = 2.
+    if (k >= m) {
+      return Matrix.concat(this.q, 'Q');
+    }
 
+    for (k; k < m; k++) {
+      const vk = this.vk(this.A, this.q[k - 1]);
+      const qk = this.qk(vk, this.q);
+      this.v[k] = vk;
+      this.q[k] = qk;
+    }
+
+    return Matrix.concat(this.q, 'Q');
   }
 
   q2(q1 = this.q1, v2: Matrix): Matrix {
@@ -45,7 +57,7 @@ export class Arnoldi {
     return v2;
   }
 
-  qk(vk: Matrix, qPrev: Array<Matrix>, k: number) {
+  qk(vk: Matrix, qPrev: Array<Matrix>, k = this.k) {
     let qtvkqAccumulator: Matrix = null;
     for (const q of qPrev) {
       // TODO: Make this recursive, instead?
@@ -67,7 +79,7 @@ export class Arnoldi {
     return qtvkq;
   }
 
-  vk(A: Matrix, qPrev: Matrix, k: number): Matrix {
+  vk(A: Matrix, qPrev: Matrix, k = this.k): Matrix {
     const vk = A.multiplyBy(qPrev, `v${k}`);
     return vk;
   }

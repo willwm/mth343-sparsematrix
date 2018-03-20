@@ -48,6 +48,26 @@ fdescribe('Arnoldi', () => {
     });
   });
 
+  describe('iterate()', () => {
+    it('should return the base case, if m <= 2', () => {
+      const A = new Matrix([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 'A');
+      const arnoldi = new Arnoldi(A, 1);
+      const Q = arnoldi.iterate();
+      console.log('Q:', Q);
+      expect(Q.rows()).toEqual(2);
+      expect(Q.cols()).toEqual(3);
+    });
+
+    it('should return Q, after m iterations, if 2 < m <= n', () => {
+      const A = new Matrix([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 'A');
+      const arnoldi = new Arnoldi(A, 3);
+      const Q = arnoldi.iterate();
+      console.log('Q:', Q);
+      expect(Q.rows()).toEqual(3);
+      expect(Q.cols()).toEqual(3);
+    });
+  });
+
   describe('q2()', () => {
     it('should return a normalized v2 - q1t*v2*q1', () => {
       const A = new Matrix([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 'A');
@@ -60,7 +80,6 @@ fdescribe('Arnoldi', () => {
       expect(v2.toArray()).toEqual(Aq1.toArray());
 
       const q2 = arnoldi.q2(q1, v2);
-      console.log(q2.toArray());
     });
   });
 

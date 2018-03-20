@@ -33,6 +33,15 @@ export class Matrix {
     }
   }
 
+  static concat(matrices: Array<Matrix>, name?: string): Matrix {
+    const mArray: Array<MathType> = new Array<MathType>();
+    for (const m of matrices) {
+      mArray.push(m.toArray());
+    }
+    const matrix = math.matrix(mArray as number[][]);
+    return new Matrix(matrix, name);
+  }
+
   get(index: Array<number>): number {
     const result = this.matrix.get(index);
     return result as number;

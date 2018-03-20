@@ -1,7 +1,7 @@
 import { Matrix } from './matrix';
 import * as math from 'mathjs';
 
-describe('Matrix', () => {
+fdescribe('Matrix', () => {
   describe('constructor()', () => {
     it('should create an instance from an Array and string, and set instance properties accordingly', () => {
       const matrix = new Matrix([[1, 2], [3, 4]], 'A');
@@ -16,6 +16,19 @@ describe('Matrix', () => {
       expect(matrix).toBeTruthy();
       expect(matrix.name).toEqual('A');
       expect(matrix.toArray()).toEqual([[1, 2], [3, 4]]);
+    });
+  });
+
+  fdescribe('(static) concat()', () => {
+    it('should combine Array<Matrix> into a single, combined Matrix', () => {
+      const matrices = [
+        new Matrix([1, 2, 3], 'v1'),
+        new Matrix([4, 5, 6], 'v2'),
+        new Matrix([7, 8, 9], 'v3')
+      ];
+      const concat = Matrix.concat(matrices, 'A');
+      expect(concat.name).toEqual('A');
+      expect(concat.toArray()).toEqual([[1, 2, 3], [4, 5, 6], [7, 8, 9]]);
     });
   });
 
