@@ -88,6 +88,22 @@ describe('Matrix', () => {
     });
   });
 
+  describe('addBy()', () => {
+    it('should correctly addBy() a vector', () => {
+      const v = new Matrix([1, 2, 3], 'v');
+      const result = v.addBy(v);
+      expect(result.toArray()).toEqual([2, 4, 6]);
+    });
+  });
+
+  describe('subtractBy()', () => {
+    it('should correctly subtractBy() a vector', () => {
+      const v = new Matrix([1, 2, 3], 'v');
+      const result = v.subtractBy(v);
+      expect(result.toArray()).toEqual([0, 0, 0]);
+    });
+  });
+
   describe('multiplyBy()', () => {
     it('should correctly multiplyBy() a scalar', () => {
       const matrix = new Matrix([[1, 2], [3, 4]], 'A');
@@ -111,9 +127,16 @@ describe('Matrix', () => {
       expect(resultArray).toEqual([[2, 4], [6, 8]]);
     });
 
-    it('should correctly multiplyBy() another Matrix instance', () => {
+    it('should correctly multiplyBy() another (2D) Matrix instance', () => {
       const A = new Matrix([[1, 2], [3, 4]], 'A');
       const B = new Matrix([[2, 0], [0, 2]], 'B');
+      const result = A.multiplyBy(B, 'C');
+      expect(result.toArray()).toEqual([[2, 4], [6, 8]]);
+    });
+
+    it('should correctly multiplyBy() another (scalar) Matrix instance', () => {
+      const A = new Matrix([[1, 2], [3, 4]], 'A');
+      const B = new Matrix(2, 'B');
       const result = A.multiplyBy(B, 'C');
       expect(result.toArray()).toEqual([[2, 4], [6, 8]]);
     });

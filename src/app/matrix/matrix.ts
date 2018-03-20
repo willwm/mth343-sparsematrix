@@ -23,8 +23,14 @@ export class Matrix {
     protected data: string | MathType,
     readonly name?: string
   ) {
-    const mData = typeof data === 'string' ? JSON.parse(data) : data;
-    this.matrix = math.matrix(mData);
+    if (typeof data === 'number') {
+      this.matrix = math.matrix([data]);
+    } else if (typeof data === 'string') {
+      const json = JSON.parse(data);
+      this.matrix = math.matrix(json);
+    } else {
+      this.matrix = math.matrix(data);
+    }
   }
 
   get(index: Array<number>): number {
@@ -82,6 +88,22 @@ export class Matrix {
     return (length === 1 || (length === 2 && size[0] === 1));
   }
 
+  isScalar(): boolean {
+    return (this.rows() === 1 && this.cols() === 1);
+  }
+
+  addBy(matrix: MathType | Matrix, name?: string): Matrix {
+    const y = matrix instanceof Matrix ? matrix.toArray() : matrix;
+    const result = math.add(this.matrix, y);
+    return new Matrix(result as mathjs.Matrix, name);
+  }
+
+  subtractBy(matrix: MathType | Matrix, name?: string): Matrix {
+    const y = matrix instanceof Matrix ? matrix.toArray() : matrix;
+    const result = math.subtract(this.matrix, y);
+    return new Matrix(result as mathjs.Matrix, name);
+  }
+
   /**
    * Convenience wrapper for math.multiply() that uses this Matrix instance as the first parameter.
    * @param {(MathArray | Matrix)} matrix
@@ -90,8 +112,18 @@ export class Matrix {
    * @memberof Matrix
    */
   multiplyBy(matrix: MathType | Matrix, name?: string): Matrix {
-    const y = matrix instanceof Matrix ? matrix.toArray() : matrix;
-    const result = math.multiply(this.matrix, y);
+    if (matrix instanceof Matrix) {
+      if (matrix.isScalar()) {
+        const scalar = matrix.get([0]);
+        const sResult = math.multiply(this.matrix, scalar);
+        return new Matrix(sResult, name);
+      } else {
+        const mResult = math.multiply(this.matrix, matrix.toArray());
+        return new Matrix(mResult, name);
+      }
+    }
+
+    const result = math.multiply(this.matrix, matrix);
     return new Matrix(result, name);
   }
   /**
