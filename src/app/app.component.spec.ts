@@ -2,6 +2,7 @@ import { async, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { KatexModule } from 'ng-katex';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HighlightService } from './highlight.service';
@@ -28,7 +29,8 @@ describe('AppComponent', () => {
         KatexModule,
         BrowserAnimationsModule,
         MatGridListModule,
-        MatExpansionModule
+        MatExpansionModule,
+        HttpClientModule
       ],
       providers: [
         HighlightService,

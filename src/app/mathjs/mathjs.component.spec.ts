@@ -4,6 +4,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { KatexModule } from 'ng-katex';
+import { HttpClientModule } from '@angular/common/http';
 
 import { HighlightService } from '../highlight.service';
 import { MatrixComponent } from '../matrix/matrix.component';
@@ -28,7 +29,8 @@ describe('MathjsComponent', () => {
         KatexModule,
         BrowserAnimationsModule,
         MatGridListModule,
-        MatExpansionModule
+        MatExpansionModule,
+        HttpClientModule
       ],
       providers: [
         HighlightService,
