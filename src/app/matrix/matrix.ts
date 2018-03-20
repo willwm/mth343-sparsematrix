@@ -1,7 +1,7 @@
 import * as math from 'mathjs';
 
 export type MathArray = number[] | number[][];
-export type MathType = number | MathArray;
+export type MathType = number | MathArray | mathjs.Matrix;
 export type MathExpression = string | string[] | MathArray;
 
 /**
@@ -15,12 +15,12 @@ export class Matrix {
 
   /**
    * Creates an instance of Matrix.
-   * @param {(string | MathArray | mathjs.Matrix)} data If a {string} is supplied, it will be parsed as JSON
+   * @param {(string | MathType)} data If a {string} is supplied, it will be parsed as JSON
    * @param {string} name (Optional) name to assign to this Matrix instance
    * @memberof Matrix
    */
   constructor(
-    private data: string | MathArray | mathjs.Matrix,
+    private data: string | MathType,
     public name?: string
   ) {
     const mData = typeof data === 'string' ? JSON.parse(data) : data;
@@ -73,6 +73,12 @@ export class Matrix {
   norm(name?: string): number {
     const result = math.norm(this.matrix);
     return result as number;
+  }
+
+  normalize(name?: string): Matrix {
+    const l2Norm = math.norm(this.matrix);
+    const result = math.divide(this.matrix, l2Norm) as mathjs.Matrix;
+    return new Matrix(result, name);
   }
 
   /**

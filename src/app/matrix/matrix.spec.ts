@@ -70,6 +70,13 @@ describe('Matrix', () => {
     expect(vNorm).toEqual(math.sqrt(14));
   });
 
+  it('should correctly normalize() a vector', () => {
+    const v = new Matrix([1, 2, 3], 'v');
+    const vNorm = v.norm('||v||');
+    const normalized = v.normalize('normalized');
+    expect(normalized.toArray()).toEqual([1 / vNorm, 2 / vNorm, 3 / vNorm]);
+  });
+
   it('should return the matrix transpose from transpose(), and should not modify the original', () => {
     const matrix = new Matrix(defaultArray, defaultName);
     const transpose = matrix.transpose();
