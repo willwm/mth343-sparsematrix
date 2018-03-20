@@ -1,7 +1,7 @@
 import { Matrix } from './matrix';
 import * as math from 'mathjs';
 
-fdescribe('Matrix', () => {
+describe('Matrix', () => {
   describe('constructor()', () => {
     it('should create an instance from an Array and string, and set instance properties accordingly', () => {
       const matrix = new Matrix([[1, 2], [3, 4]], 'A');
@@ -82,7 +82,7 @@ fdescribe('Matrix', () => {
     });
   });
 
-  fdescribe('flatten()', () => {
+  describe('flatten()', () => {
     it('should flatten a 2D array to an expected 1D array', () => {
       const A = new Matrix([[1, 2, 3], [4, 5, 6]], 'A');
       const flat = A.flatten();

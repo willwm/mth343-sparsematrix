@@ -71,8 +71,8 @@ describe('Arnoldi', () => {
       const A = new Matrix([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 'A');
       const arnoldi = new Arnoldi(A, 1);
       const Q = arnoldi.iterate();
-      expect(Q.rows()).toEqual(2);
-      expect(Q.cols()).toEqual(3);
+      expect(Q.rows()).toEqual(3);
+      expect(Q.cols()).toEqual(2);
     });
 
     it('should return Q, after m iterations, if 2 < m <= n', () => {
