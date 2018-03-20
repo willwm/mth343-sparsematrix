@@ -10,6 +10,10 @@ export class Arnoldi {
   readonly q1: Matrix;
 
   constructor(readonly A: Matrix, _m?: number) {
+    if (A.cols() !== A.rows()) {
+      throw new Error((`A must be an n x n matrix; you provided a ${A.rows()} x ${A.cols()} matrix.`));
+    }
+
     this.n = A.rows();
     this.m = (_m && _m < this.n) ? _m : this.n;
 
@@ -19,21 +23,24 @@ export class Arnoldi {
 
     this.q1 = this.v1.normalize('q1');
     this.q[0] = this.q1;
+
+    const v2 = this.v2();
+    const q2 = this.q2(this.q1, v2);
   }
 
   iterate() {
-    // Given: v1 (=v[0]), q1 (=q[0]) are already defined, and k = 0.
+    // Given: v1 (=v[0]), q1 (=q[0]), and k = 0 are defined.
 
   }
 
-  q2(q1: Matrix, v2: Matrix): Matrix {
+  q2(q1 = this.q1, v2: Matrix): Matrix {
     const qtv2q = this.qtvkq(q1, v2);
     const q2DeNorm = v2.subtractBy(qtv2q);
     const q2 = q2DeNorm.normalize('q2');
     return q2;
   }
 
-  v2(A: Matrix, q1: Matrix): Matrix {
+  v2(A = this.A, q1 = this.q1): Matrix {
     const v2 = A.multiplyBy(q1, 'v2');
     return v2;
   }

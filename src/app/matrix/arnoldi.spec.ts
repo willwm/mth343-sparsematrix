@@ -1,7 +1,7 @@
 import { Arnoldi } from './arnoldi';
 import { Matrix } from './matrix';
 
-describe('Arnoldi', () => {
+fdescribe('Arnoldi', () => {
 
   describe('constructor()', () => {
     it('should create an instance', () => {
@@ -19,23 +19,32 @@ describe('Arnoldi', () => {
       expect(arnoldi.v1.toArray()).toEqual([1, 0]);
     });
 
+    it('should only allow n x n matrices', () => {
+      try {
+        const A = new Matrix([[1, 2, 3], [4, 5, 6]], 'A');
+        const arnoldi = new Arnoldi(A);
+      } catch (error) {
+        expect(error.message).toEqual('A must be an n x n matrix; you provided a 2 x 3 matrix.');
+      }
+    });
+
     it('should let an m < n be assigned', () => {
-      const A = new Matrix([[1, 2, 3], [4, 5, 6]], 'A');
+      const A = new Matrix([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 'A');
       const arnoldi = new Arnoldi(A, 2);
       expect(arnoldi.m).toEqual(2);
     });
 
     it('should *not* let an m > n be assigned', () => {
-      const A = new Matrix([[1, 2, 3], [4, 5, 6]], 'A');
-      const arnoldi = new Arnoldi(A, 3);
+      const A = new Matrix([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 'A');
+      const arnoldi = new Arnoldi(A, 4);
       expect(arnoldi.m).toEqual(A.rows());
     });
 
     it('should return a normalized v1 as q1', () => {
-      const A = new Matrix([[1, 2, 3], [4, 5, 6]], 'A');
+      const A = new Matrix([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 'A');
       const arnoldi = new Arnoldi(A);
       const q1 = arnoldi.q1;
-      expect(q1.toArray()).toEqual([1, 0]);
+      expect(q1.toArray()).toEqual([1, 0, 0]);
     });
   });
 
@@ -82,14 +91,13 @@ describe('Arnoldi', () => {
 
   describe('vk()', () => {
     it('should return A q_{k-1}', () => {
-      const A = new Matrix([[1, 2, 3], [4, 5, 6]], 'A');
-      const q1 = new Matrix([1, 0, 0], 'q1');
-      const Aq1 = A.multiplyBy(q1, 'Aq1');
+      const A = new Matrix([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 'A');
       const arnoldi = new Arnoldi(A);
+      const q1 = arnoldi.q1;
 
-      const k = 2;
-      const vk = arnoldi.vk(A, q1, k);
-      expect(vk.toArray()).toEqual(Aq1.toArray());
+      const vk = arnoldi.vk(A, q1, 2);
+      const v2 = arnoldi.v2(A, q1);
+      expect(vk.toArray()).toEqual(v2.toArray());
     });
   });
 });
