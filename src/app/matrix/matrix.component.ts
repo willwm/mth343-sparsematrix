@@ -26,6 +26,7 @@ export class MatrixComponent implements OnInit {
     this.matrix = matrix;
     this.matrixEquation = `${name} = ${this.toTex(matrix)}`;
     console.log(name, matrix);
+    console.log(matrix.toArray());
   }
 
   toTex(matrix: Matrix): string {

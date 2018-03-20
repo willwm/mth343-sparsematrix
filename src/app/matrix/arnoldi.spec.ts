@@ -64,6 +64,16 @@ describe('Arnoldi', () => {
       expect(T.rows()).toEqual(3);
       expect(T.cols()).toEqual(3);
     });
+
+    it('should get T=(Q^T)AQ, for a given (slightly larger) A and omitted m', () => {
+      // tslint:disable-next-line:max-line-length
+      const array = [[204, 168, 133, 100, 70, 44, 23, 8], [168, 140, 112, 85, 60, 38, 20, 7], [133, 112, 91, 70, 50, 32, 17, 6], [100, 85, 70, 55, 40, 26, 14, 5], [70, 60, 50, 40, 30, 20, 11, 4], [44, 38, 32, 26, 20, 14, 8, 3], [23, 20, 17, 14, 11, 8, 5, 2], [8, 7, 6, 5, 4, 3, 2, 1]];
+      const A = new Matrix(array, 'A');
+      const arnoldi = new Arnoldi(A);
+      const T = arnoldi.getTridiagonal();
+      expect(T.rows()).toEqual(8);
+      expect(T.cols()).toEqual(8);
+    });
   });
 
   describe('iterate()', () => {
