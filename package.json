@@ -32,6 +32,8 @@
     "@angular/platform-browser": "^5.2.9",
     "@angular/platform-browser-dynamic": "^5.2.9",
     "@angular/router": "^5.2.9",
+    "@bluemath/common": "^0.2.3",
+    "@bluemath/linalg": "^0.2.2",
     "core-js": "^2.4.1",
     "js-beautify": "^1.7.5",
     "mathjs": "^4.0.1",
