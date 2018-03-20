@@ -27,6 +27,16 @@ export class Matrix {
     this.matrix = math.matrix(mData);
   }
 
+  rows(): number {
+    const size = this.size();
+    return (size.length === 1) ? 1 : size[0];
+  }
+
+  cols(): number {
+    const size = this.size();
+    return (size.length === 1) ? size[0] : size[1];
+  }
+
   /**
    * Convenience wrapper for math.matrix.toArray()
    * @returns {MathArray}
@@ -122,8 +132,9 @@ export class Matrix {
 
   /**
    * Convenience wrapper for math.transpose()
+   * Note: Only works with 2d+ matrices/arrays; 1d matrices/arrays (vectors) are returned unchanged.
    * @param {string} name (Optional) name to assign to the result Matrix instance
-   * @returns {Matrix}
+   * @returns {Matrix} Transpose of a 2d+ matrix; vectors are returned unmodified.
    * @memberof Matrix
    */
   transpose(name?: string): Matrix {
