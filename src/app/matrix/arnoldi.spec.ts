@@ -35,10 +35,9 @@ describe('Arnoldi', () => {
   describe('q1()', () => {
     it('should return a normalized v1', () => {
       const A = new Matrix([[1, 2, 3], [4, 5, 6]], 'A');
-      const v1 = new Matrix([1, 0, 0], 'v1');
       const arnoldi = new Arnoldi(A);
-      const q1 = arnoldi.q1(v1);
-      expect(q1.toArray()).toEqual([1, 0, 0]);
+      const q1 = arnoldi.q1;
+      expect(q1.toArray()).toEqual([1, 0]);
     });
   });
 
