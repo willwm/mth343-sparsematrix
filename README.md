@@ -1,5 +1,8 @@
 # mth343-sparsematrix
 
+* http://mth343-sparsematrix.surge.sh/
+* http://mth343-sparsematrix.surge.sh/assets/docs/
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.2.
 
 Notable Dependencies:
