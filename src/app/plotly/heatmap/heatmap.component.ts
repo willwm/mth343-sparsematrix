@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
-import * as math from 'mathjs';
 import * as Plotly from 'plotly.js';
 
 @Component({

@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { MatExpansionModule } from '@angular/material/expansion';
-import { MatGridListModule } from '@angular/material/grid-list';
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { KatexModule } from 'ng-katex';
@@ -26,8 +24,6 @@ import { StringifyService } from './stringify.service';
     FormsModule,
     KatexModule,
     BrowserAnimationsModule,
-    MatGridListModule,
-    MatExpansionModule,
     HttpClientModule
   ],
   providers: [
