@@ -8,7 +8,6 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { HighlightService } from '../highlight.service';
 import { MatrixComponent } from '../matrix/matrix.component';
-import { HeatmapComponent } from '../plotly/heatmap/heatmap.component';
 import { StringifyService } from '../stringify.service';
 import { MathjsComponent } from './mathjs.component';
 import { Matrix } from '../matrix/matrix';
@@ -20,7 +19,6 @@ describe('MathjsComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
-        HeatmapComponent,
         MathjsComponent,
         MatrixComponent
       ],

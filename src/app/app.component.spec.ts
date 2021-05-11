@@ -7,7 +7,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { HighlightService } from './highlight.service';
 import { MathjsComponent } from './mathjs/mathjs.component';
-import { HeatmapComponent } from './plotly/heatmap/heatmap.component';
 import { StringifyService } from './stringify.service';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -19,7 +18,6 @@ describe('AppComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
-        HeatmapComponent,
         MathjsComponent,
         MatrixComponent
       ],
