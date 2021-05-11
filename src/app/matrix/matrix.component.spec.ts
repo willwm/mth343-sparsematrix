@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { KatexModule } from 'ng-katex';
 
 import { Matrix } from './matrix';
@@ -11,7 +11,7 @@ describe('MatrixComponent', () => {
   const matrix = new Matrix([[1, 0], [0, 1]], name);
 
   beforeEach(
-    async(() => {
+    waitForAsync(() => {
       TestBed.configureTestingModule({
         declarations: [MatrixComponent],
         imports: [KatexModule]

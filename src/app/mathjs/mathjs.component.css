@@ -1,3 +1,13 @@
 mat-panel-title, mat-panel-description {
   font-family: 'Katex_Main', monospace;
 }
+
+.matrices {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.matrices app-matrix {
+  flex: 1 1 auto;
+  margin: 10px;
+}

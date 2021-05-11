@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.8.3/katex.min.css');
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
+html, body { height: 100%; }
 html {
   box-sizing: border-box;
 }
