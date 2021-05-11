@@ -10,30 +10,22 @@ import { AppComponent } from './app.component';
 import { HighlightService } from './highlight.service';
 import { MathjsComponent } from './mathjs/mathjs.component';
 import { MatrixComponent } from './matrix/matrix.component';
-import { HeatmapComponent } from './plotly/heatmap/heatmap.component';
 import { StringifyService } from './stringify.service';
-
-import * as PlotlyJS from 'plotly.js-dist';
-import { PlotlyModule } from 'angular-plotly.js';
-
-PlotlyModule.plotlyjs = PlotlyJS;
 
 @NgModule({
   declarations: [
     AppComponent,
     MathjsComponent,
-    HeatmapComponent,
     MatrixComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     KatexModule,
-    BrowserAnimationsModule,
     MatGridListModule,
     MatExpansionModule,
+    BrowserAnimationsModule,
     HttpClientModule,
-    PlotlyModule
   ],
   providers: [
     Title,

@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.8.3/katex.min.css');
 
+html, body { height: 100%; }
 html {
   box-sizing: border-box;
 }
@@ -17,6 +18,3 @@ pre, pre>code, .monospace {
 }
 
 .katex { font-size: 0.75em !important; }
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -1669,13 +1669,6 @@ alphanum-sort@^1.0.2:
   resolved "https://registry.yarnpkg.com/alphanum-sort/-/alphanum-sort-1.0.2.tgz#97a1119649b211ad33691d9f9f486a8ec9fbe0a3"
   integrity sha1-l6ERlkmyEa0zaR2fn0hqjsn74KM=
 
-angular-plotly.js@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/angular-plotly.js/-/angular-plotly.js-4.0.0.tgz#6e7498f7980a33337a0ff9074345d7777f5f2865"
-  integrity sha512-gmQtmO2FVUmVXV61chxew4DQE+2ciKhQe3F1q/KmeQ3B1s+4As0agismHp0rRK9EEgOtIYIJAj02A/hiDS8m6w==
-  dependencies:
-    tslib "^2.0.0"
-
 ansi-colors@4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/ansi-colors/-/ansi-colors-4.1.1.tgz#cbb9ae256bf750af1eab344f229aa27fe94ba348"
@@ -6590,11 +6583,6 @@ pkg-dir@^4.1.0:
   integrity sha512-HRDzbaKjC+AOWVXxAU/x54COGeIv9eb+6CkDSQoNTt4XyWoIJvuPsXizxu/Fr23EiekbtZwmh1IcIG/l/a10GQ==
   dependencies:
     find-up "^4.0.0"
-
-plotly.js-dist@^1.58.4:
-  version "1.58.4"
-  resolved "https://registry.yarnpkg.com/plotly.js-dist/-/plotly.js-dist-1.58.4.tgz#d57b73d27af57a0d6cd2cf9428a001962889cf5b"
-  integrity sha512-oXCTRJFN8FBsHZSQPYoM3LuJQchPUrf6sOXFC0EFdvcr5lmJmLcAsW74jDy9PkRpm3PB+A+2oY1hsUMmk2eZbw==
 
 pnp-webpack-plugin@1.6.4:
   version "1.6.4"
