@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
-import * as Plotly from 'plotly.js';
 
 @Component({
   selector: 'app-heatmap',
@@ -9,6 +8,8 @@ import * as Plotly from 'plotly.js';
 export class HeatmapComponent implements OnInit, OnChanges {
   @Input() id = 'plotly';
   @Input() matrix: mathjs.Matrix;
+
+  public graph: any;
 
   constructor() { }
 
@@ -50,7 +51,11 @@ export class HeatmapComponent implements OnInit, OnChanges {
         t: 35, l: 40, b: 35, r: 40
       }
     };
-    Plotly.newPlot(this.id, plotData, layout, {displayModeBar: false});
+
+    this.graph = {
+      data: plotData,
+      layout
+    };
   }
 
 }
