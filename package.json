@@ -38,7 +38,7 @@
     "js-beautify": "^1.7.5",
     "mathjs": "^7.5.1",
     "ng-katex": "^2.0.3",
-    "prismjs": "^1.12.2",
+    "prismjs": "^1.24.0",
     "rxjs": "^6.6.7",
     "rxjs-compat": "^6.0.0-rc.0",
     "tslib": "^2.0.0",
